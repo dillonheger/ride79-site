@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:sticky;top:0;z-index:60;width:100%">
+  <div style="background:#111111;color:#F4F1E9;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:9px 16px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 22px;text-align:center">
+    <span>UK authorised 79BIKE dealer</span>
+    <span style="color:#FF583D" aria-hidden="true">/</span>
+    <span>Dispatched from the UK warehouse</span>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <span style="color:#FF583D" aria-hidden="true">/</span>
+      <span>Tracked UK mainland delivery included</span>
+    </sc-if>
+  </div>
+  <nav aria-label="Main" style="background:rgba(244,241,233,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(17,17,17,.14)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,40px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="/" aria-label="RIDE79 home" style="display:flex;align-items:baseline;gap:10px;text-decoration:none;color:#111111">
+        <span style="font-family:Archivo,sans-serif;font-stretch:62%;font-weight:900;font-size:32px;letter-spacing:-.01em;line-height:1">RIDE<span style="color:#FF583D">79</span></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:#55524B">UK / LONDON</span>
+      </a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:28px">
+          <sc-for list="{{ links }}" as="l" hint-placeholder-count="6">
+            <a href="{{ l.href }}" aria-current="{{ l.current }}" style="font-family:Archivo,sans-serif;font-weight:600;font-size:15px;text-decoration:none;color:#111111;padding:6px 0;border-bottom:2px solid {{ l.line }}" style-hover="color:#FF583D">{{ l.label }}</a>
+          </sc-for>
+          <a href="/#choose" style="font-family:Archivo,sans-serif;font-weight:700;font-size:15px;text-decoration:none;background:#FF583D;color:#111111;height:44px;padding:0 20px;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Choose your Falcon <span aria-hidden="true">→</span></a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:8px">
+          <a href="/#choose" style="font-family:Archivo,sans-serif;font-weight:700;font-size:14px;text-decoration:none;background:#FF583D;color:#111111;height:44px;padding:0 14px;display:flex;align-items:center">Choose</a>
+          <button type="button" aria-expanded="{{ open }}" aria-controls="mobile-menu" onClick="{{ toggle }}" style="height:44px;min-width:76px;border:1.5px solid #111111;background:transparent;color:#111111;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;cursor:pointer">{{ menuLabel }}</button>
+        </div>
+      </sc-if>
+    </div>
+  </nav>
+  <sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
+    <div id="mobile-menu" style="background:#111111;color:#F4F1E9;padding:20px 20px 28px;display:flex;flex-direction:column;gap:2px;max-height:calc(100vh - 100px);overflow:auto">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="6">
+        <a href="{{ l.href }}" onClick="{{ close }}" style="font-family:Archivo,sans-serif;font-stretch:62%;font-weight:900;font-size:44px;line-height:1.05;text-transform:uppercase;text-decoration:none;color:#F4F1E9;padding:6px 0;border-bottom:1px solid rgba(244,241,233,.14);display:flex;justify-content:space-between;align-items:center">{{ l.label }}<span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-stretch:100%;color:#FF583D">{{ l.num }}</span></a>
+      </sc-for>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:#B9B5AA;margin:18px 0 0;text-transform:uppercase">Off-road use only · Tracked UK mainland delivery</p>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;gt&quot;,&quot;pro&quot;,&quot;compare&quot;,&quot;buying&quot;,&quot;about&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { wide: typeof window === 'undefined' ? true : window.innerWidth >= 1000, open: false };
+  componentDidMount() {
+    this.onR = () => this.setState({ wide: window.innerWidth >= 1000 });
+    window.addEventListener('resize', this.onR);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
+  renderVals() {
+    const a = this.props.active;
+    const L = [['gt','Falcon GT','/falcon-gt'],['pro','Falcon Pro','/falcon-pro'],['compare','Compare','/compare'],['buying','Buying & support','/buying-and-support'],['about','About','/about'],['contact','Contact','/contact']];
+    const links = L.map(([k,label,href],i) => ({ label, href, num: '0' + (i+1), current: a === k ? 'page' : undefined, line: a === k ? '#FF583D' : 'transparent' }));
+    const { wide, open } = this.state;
+    return { links, wide, narrow: !wide, open, showMenu: !wide && open, menuLabel: open ? 'CLOSE' : 'MENU',
+      toggle: () => this.setState(s => ({ open: !s.open })), close: () => this.setState({ open: false }) };
+  }
+}
+</script>
+</body>
+</html>

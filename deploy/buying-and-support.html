@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="icon" href="/brand/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/brand/favicon/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/brand/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#111111">
+  <title>Buying, Delivery &amp; Support — How Ordering Works | RIDE79</title>
+  <meta name="description" content="How buying a 79BIKE Falcon from RIDE79 works: choose your model and colourway, pay securely by card through Stripe, 1–3 business days processing, 3–7 business days tracked delivery and 12-month limited warranty support.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RIDE79">
+  <meta property="og:image" content="https://ride79.co.uk/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ride79.co.uk/buying-and-support">
+  <meta property="og:title" content="Buying, delivery &amp; support — RIDE79">
+  <meta property="og:description" content="Four simple steps from choosing your Falcon to riding it.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ride79.co.uk/buying-and-support">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+  <style>*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;background:#F4F1E9;color:#111111;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#111111}a:hover{color:#FF583D}:focus-visible{outline:3px solid #4355FF;outline-offset:2px}summary::-webkit-details-marker{display:none}@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}</style>
+</helmet>
+<dc-import name="Nav" active="buying" hint-size="100%,100px"></dc-import>
+<main id="main" style="font-family:Archivo,sans-serif;color:#111111;background:#F4F1E9">
+  <section aria-labelledby="b-title" style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(16px,3vw,40px) clamp(40px,5vw,72px)">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#55524B">BUYING / DELIVERY / SUPPORT</span>
+    <h1 id="b-title" style="margin:12px 0 18px;font-stretch:62%;font-weight:900;font-size:clamp(64px,11vw,168px);line-height:.8;text-transform:uppercase">From click<br>to <span style="color:#FF583D">dirt.</span></h1>
+    <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;max-width:54ch">Four simple steps. You always know what's happening and where your bike is.</p>
+    <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:8px">
+      <a href="#steps" style="min-height:44px;padding:0 14px;border:1.5px solid #111111;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">The 4 steps</a>
+      <a href="#payment" style="min-height:44px;padding:0 14px;border:1.5px solid #111111;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Payment</a>
+      <a href="#delivery" style="min-height:44px;padding:0 14px;border:1.5px solid #111111;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Delivery</a>
+      <a href="#warranty" style="min-height:44px;padding:0 14px;border:1.5px solid #111111;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Warranty &amp; parts</a>
+    </div>
+  </section>
+
+  <section id="steps" aria-labelledby="steps-title" style="scroll-margin-top:110px;background:#FFFFFF;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,96px) clamp(16px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,4vw,64px)">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">ORDER STATUS / TYPICAL JOURNEY</span>
+        <h2 id="steps-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(48px,6vw,88px);line-height:.85;text-transform:uppercase">Four<br>steps.</h2>
+        <p style="margin:0;font-size:16px;line-height:1.5;color:#3A3832;max-width:34ch">Tap a step for the detail.</p>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="8">
+          <li style="display:grid;grid-template-columns:40px 1fr;gap:14px">
+            <div style="display:flex;flex-direction:column;align-items:center">
+              <span aria-hidden="true" style="width:22px;height:22px;border-radius:50%;background:{{ s.dot }};border:3px solid #111111;margin-top:18px;flex:0 0 auto"></span>
+              <span aria-hidden="true" style="flex:1;width:3px;background:{{ s.line }}"></span>
+            </div>
+            <button type="button" aria-expanded="{{ s.on }}" onClick="{{ s.pick }}" style="text-align:left;background:transparent;border:0;border-bottom:1px solid rgba(17,17,17,.14);padding:14px 0 16px;cursor:pointer;color:#111111;font-family:Archivo,sans-serif;display:flex;flex-direction:column;gap:6px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#55524B">{{ s.n }} · {{ s.who }}</span>
+              <strong style="font-size:clamp(19px,2vw,24px);line-height:1.2">{{ s.t }}</strong>
+              <sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}"><span style="font-size:16px;line-height:1.55;color:#3A3832;max-width:56ch">{{ s.b }}</span></sc-if>
+            </button>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section id="payment" aria-labelledby="pay-title" style="scroll-margin-top:110px;max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(16px,3vw,40px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,4vw,64px)">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">PAYMENT</span>
+        <h2 id="pay-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(48px,6vw,88px);line-height:.85;text-transform:uppercase">Pay by card.<br>Securely.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#3A3832;max-width:42ch">Check out on the product page. Your order confirmation, with model, colourway, price and delivery address, arrives by email the moment you pay.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;align-content:start">
+        <div style="background:#FFFFFF;border:1.5px solid #111111;padding:24px;display:flex;flex-direction:column;gap:10px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF">AT CHECKOUT</span><strong style="font-size:22px">Credit or debit card</strong><span style="font-size:15px;line-height:1.5;color:#3A3832">Processed securely by Stripe. Your card details go straight to Stripe and never touch our systems. Any card protection depends on your card provider's terms.</span></div>
+        <div style="background:#FFFFFF;border:1.5px solid #111111;padding:24px;display:flex;flex-direction:column;gap:10px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF">ON REQUEST</span><strong style="font-size:22px">Bank transfer</strong><span style="font-size:15px;line-height:1.5;color:#3A3832"><a href="/contact">Contact us</a> and we'll send a written order with the RIDE79 business account details.</span></div>
+        <div style="grid-column:1/-1;background:#111111;color:#F4F1E9;padding:18px 20px;font-size:15px;line-height:1.5"><strong>We will never ask you</strong> to pay into a personal bank account.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="delivery" aria-labelledby="del-title" style="scroll-margin-top:110px;background:#111111;color:#F4F1E9">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:clamp(28px,4vw,48px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 40px">
+        <h2 id="del-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.85;text-transform:uppercase">Delivery,<br><span style="color:#FF583D">honestly.</span></h2>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#D8D4C9;max-width:44ch">We'd rather give you a realistic window than a promise we can't control.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));border-top:2px solid #F4F1E9">
+        <div style="padding:22px 22px 22px 0;border-bottom:1px solid rgba(244,241,233,.16);display:flex;flex-direction:column;gap:8px"><span style="font-stretch:62%;font-weight:900;font-size:64px;line-height:.85">4–10</span><strong style="font-size:17px">Business days, approx.</strong><span style="font-size:15px;color:#B9B5AA;line-height:1.5">1–3 business days processing, then 3–7 business days tracked delivery. An estimate, not a guaranteed date.</span></div>
+        <div style="padding:22px 22px 22px 0;border-bottom:1px solid rgba(244,241,233,.16);display:flex;flex-direction:column;gap:8px"><span style="font-stretch:62%;font-weight:900;font-size:64px;line-height:.85">UK</span><strong style="font-size:17px">Warehouse dispatch</strong><span style="font-size:15px;color:#B9B5AA;line-height:1.5">Fulfilled from the UK warehouse, sent direct to you.</span></div>
+        <div style="padding:22px 22px 22px 0;border-bottom:1px solid rgba(244,241,233,.16);display:flex;flex-direction:column;gap:8px"><span style="font-stretch:62%;font-weight:900;font-size:64px;line-height:.85">£0</span><strong style="font-size:17px">UK mainland delivery</strong><span style="font-size:15px;color:#B9B5AA;line-height:1.5">Included in the price. Highlands and islands, Northern Ireland, Isle of Man, Scilly and Channel Islands aren't covered — <a href="/contact?topic=delivery" style="color:#F4F1E9">contact us</a> and we'll confirm if we can deliver and any extra charge.</span></div>
+        <div style="padding:22px 22px 22px 0;border-bottom:1px solid rgba(244,241,233,.16);display:flex;flex-direction:column;gap:8px"><span style="font-stretch:62%;font-weight:900;font-size:64px;line-height:.85">TRK</span><strong style="font-size:17px">Tracked courier</strong><span style="font-size:15px;color:#B9B5AA;line-height:1.5">We pass your tracking details on as soon as we have them.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="warranty" aria-labelledby="war-title" style="scroll-margin-top:110px;max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(16px,3vw,40px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,4vw,64px)">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">WARRANTY &amp; PARTS</span>
+        <h2 id="war-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(48px,6vw,88px);line-height:.85;text-transform:uppercase">12 months.<br>One contact.</h2>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#3A3832;max-width:42ch">Both Falcons come with a 12-month limited manufacturer warranty. If something goes wrong, you contact RIDE79 and we manage the claim with 79BIKE. Cover is subject to 79BIKE's full warranty terms.</p>
+        <a href="/contact" style="align-self:flex-start;height:52px;padding:0 20px;background:#111111;color:#F4F1E9;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px" style-hover="background:#FF583D;color:#111111">Request warranty or parts help →</a>
+        <a href="/warranty" style="align-self:flex-start;font-size:15px;font-weight:700">Full warranty terms: what's covered, what isn't, how to claim →</a>
+      </div>
+      <div style="border:1.5px solid #111111;background:#FFFFFF">
+        <div style="display:grid;grid-template-columns:1fr auto;background:#111111;color:#F4F1E9;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;padding:12px 16px"><span>COMPONENT</span><span>COVER</span></div>
+        <sc-for list="{{ cover }}" as="c" hint-placeholder-count="8">
+          <div style="display:grid;grid-template-columns:1fr auto;padding:12px 16px;border-top:1px solid rgba(17,17,17,.14);font-size:16px"><span style="font-weight:600">{{ c }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4355FF">12 MONTHS</span></div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="margin-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+      <div style="border-top:3px solid #111111;padding-top:16px;display:flex;flex-direction:column;gap:8px"><strong style="font-size:19px">Genuine parts</strong><span style="font-size:15px;line-height:1.5;color:#3A3832">Tell us your model and what you need; we source genuine 79BIKE parts for you.</span></div>
+      <div style="border-top:3px solid #111111;padding-top:16px;display:flex;flex-direction:column;gap:8px"><strong style="font-size:19px">Help diagnosing</strong><span style="font-size:15px;line-height:1.5;color:#3A3832">Send photos or video of the issue and we work through it with you and 79BIKE's technical team.</span></div>
+      <div style="border-top:3px solid #111111;padding-top:16px;display:flex;flex-direction:column;gap:8px"><strong style="font-size:19px">Off-road only</strong><span style="font-size:15px;line-height:1.5;color:#3A3832">Falcons are not road legal. Ride on private land with permission and always wear full protective kit.</span></div>
+    </div>
+  </section>
+
+  <section aria-label="Start" style="background:#FF583D">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(16px,3vw,40px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px">
+      <h2 style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(52px,8vw,120px);line-height:.82;text-transform:uppercase">Ready for<br>step one?</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="/falcon-gt#order" style="height:56px;padding:0 22px;background:#111111;color:#F4F1E9;text-decoration:none;font-weight:800;display:flex;align-items:center" style-hover="background:#F4F1E9;color:#111111">Buy the GT →</a>
+        <a href="/falcon-pro#order" style="height:56px;padding:0 22px;background:#111111;color:#F4F1E9;text-decoration:none;font-weight:800;display:flex;align-items:center" style-hover="background:#F4F1E9;color:#111111">Buy the Pro →</a>
+      </div>
+    </div>
+  </section>
+</main>
+<dc-import name="Footer" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    const S = [
+      ['Choose your Falcon & colourway', 'You', 'Pick the GT or Pro and your colourway on the product page. Every model and colourway can be ordered online.'],
+      ['Check out securely', 'You', 'Pay by credit or debit card through Stripe. Your order confirmation arrives by email straight away.'],
+      ['Processed & delivered', 'RIDE79 + courier', 'Your order is processed within 1–3 business days, then delivered by tracked courier in 3–7 business days. Tracking is sent to you and UK mainland delivery is included.'],
+      ['Ride — we\'ve got you', 'RIDE79', 'After delivery we stay your UK contact for warranty help and genuine replacement parts.']
+    ];
+    const { open } = this.state;
+    return {
+      steps: S.map(([t, who, b], i) => ({ t, b, who: who.toUpperCase(), n: String(i + 1).padStart(2, '0'), on: i === open, dot: i <= open ? '#FF583D' : '#FFFFFF', line: i < S.length - 1 ? (i < open ? '#FF583D' : '#111111') : 'transparent', pick: () => this.setState({ open: i }) })),
+      cover: ['Motor', 'Frame', 'Battery', 'Controller', 'Display', 'Throttle', 'LED lights', 'Electrical wiring']
+    };
+  }
+}
+</script>
+</body>
+</html>

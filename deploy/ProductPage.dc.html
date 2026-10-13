@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<main id="main" style="font-family:Archivo,sans-serif;color:#111111;background:#F4F1E9">
+  <section id="buy" aria-labelledby="p-title" style="scroll-margin-top:90px;padding:clamp(20px,3vw,40px) clamp(16px,3vw,40px) clamp(40px,5vw,72px);max-width:1440px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#55524B;text-transform:uppercase;margin-bottom:14px">
+      <span><a href="/" style="color:#55524B">Bikes</a> / {{ d.name }} / {{ d.code }}</span>
+      <span>{{ d.role }}</span>
+    </div>
+    <h1 id="p-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(84px,17vw,260px);line-height:.8;letter-spacing:-.02em;text-transform:uppercase">{{ d.short }}<span style="color:#FF583D">{{ d.suffix }}</span></h1>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(20px,3vw,40px);margin-top:clamp(16px,2vw,28px);align-items:start">
+      <div style="position:relative;background:#E9E5DA;background-image:linear-gradient(rgba(17,17,17,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.06) 1px,transparent 1px);background-size:48px 48px;aspect-ratio:16/11;display:flex;align-items:center;justify-content:center;overflow:hidden">
+        <img src="{{ cur.img }}" alt="{{ cur.alt }}" width="1600" height="1000" fetchpriority="high" style="width:94%;height:auto;max-height:92%;object-fit:contain;position:relative;z-index:1">
+        <div style="position:absolute;left:14px;top:12px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:flex;flex-direction:column;gap:2px">
+          <span style="color:#4355FF">● {{ cur.num }} / {{ d.colourCount }}</span><span>{{ cur.name }}</span>
+        </div>
+        <div style="position:absolute;right:14px;bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#55524B;text-align:right">{{ d.coord }}</div>
+      </div>
+      <div style="background:#FFFFFF;border:1.5px solid #111111;padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:20px">
+        <div>
+          <p style="margin:0 0 6px;font-size:clamp(18px,1.6vw,21px);font-weight:600;line-height:1.3;text-wrap:pretty">{{ d.pitch }}</p>
+          <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:14px">
+            <span style="font-stretch:62%;font-weight:900;font-size:64px;line-height:.9">{{ d.price }}</span>
+            <span style="font-size:15px;font-weight:600">Tracked UK mainland delivery included</span>
+            <a href="#why-ride79" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.04em;background:#FF583D;color:#111111;padding:5px 8px;text-decoration:none">£304 LESS THAN BUYING DIRECT →</a>
+          </div>
+        </div>
+        <fieldset style="border:0;padding:0;margin:0">
+          <legend style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;margin-bottom:10px;text-transform:uppercase">Select your colour — <strong>{{ cur.name }}</strong></legend>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ colours }}" as="c" hint-placeholder-count="6">
+              <button type="button" aria-label="{{ c.name }}" aria-pressed="{{ c.on }}" onClick="{{ c.pick }}" style="width:52px;height:52px;border-radius:50%;padding:0;cursor:pointer;background:{{ c.swatch }};border:1px solid rgba(17,17,17,.3);outline:{{ c.ring }};outline-offset:3px"></button>
+            </sc-for>
+          </div>
+        </fieldset>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button type="button" onClick="{{ buyNow }}" style="height:60px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 22px" style-hover="background:#111111;color:#F4F1E9">Buy now — {{ d.price }} <span aria-hidden="true">→</span></button>
+          <span style="font-size:14px;color:#55524B">{{ cur.name }} · secure card checkout by Stripe · delivery included</span>
+          <a href="https://wa.me/447875991471" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#111111;padding:6px 0">Questions? WhatsApp us on +44 7875 991471 →</a>
+        </div>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;font-size:15px;line-height:1.4;border-top:1px solid rgba(17,17,17,.14)">
+          <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(17,17,17,.14)"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF;min-width:64px;padding-top:2px">DELIVERY</span>Processed in 1–3 business days, then tracked delivery in 3–7 business days.</li>
+                    <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(17,17,17,.14)"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF;min-width:64px;padding-top:2px">WARRANTY</span>12-month limited manufacturer warranty, handled through RIDE79.</li>
+          <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(17,17,17,.14)"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF;min-width:64px;padding-top:2px">PAYMENT</span>Credit or debit card, processed securely by Stripe.</li>
+        </ul>
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;line-height:1.5;text-transform:uppercase;background:#111111;color:#F4F1E9;padding:10px 12px">Off-road use only. Not road legal in the UK.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Key figures" style="background:#111111;color:#F4F1E9">
+    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(50%,220px),1fr))">
+      <sc-for list="{{ d.stats }}" as="s" hint-placeholder-count="5">
+        <div style="padding:clamp(24px,3vw,40px) clamp(16px,2vw,28px);border-right:1px solid rgba(244,241,233,.14);border-bottom:1px solid rgba(244,241,233,.14);display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#FF583D">{{ s.code }}</span>
+          <span style="font-stretch:62%;font-weight:900;font-size:clamp(56px,6vw,96px);line-height:.85">{{ s.v }}<span style="font-size:.4em;color:#8E95FF;margin-left:4px">{{ s.u }}</span></span>
+          <span style="font-size:15px;color:#B9B5AA">{{ s.l }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-labelledby="hw-title" style="padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px);max-width:1440px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 40px;margin-bottom:clamp(28px,4vw,48px)">
+      <h2 id="hw-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(52px,8vw,120px);line-height:.85;text-transform:uppercase;max-width:12ch">{{ d.hwTitle }}</h2>
+      <p style="margin:0;font-size:18px;line-height:1.5;max-width:42ch;color:#3A3832">{{ d.hwIntro }}</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:2px;background:#111111;border:2px solid #111111">
+      <sc-for list="{{ d.features }}" as="f" hint-placeholder-count="4">
+        <article style="background:#F4F1E9;display:flex;flex-direction:column">
+          <sc-if value="{{ f.img }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ f.img }}" alt="{{ f.alt }}" loading="lazy" width="680" height="420" style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block">
+          </sc-if>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <span style="font-stretch:62%;font-weight:900;font-size:56px;line-height:.8;color:#4355FF">{{ f.k }}</span>
+            <h3 style="margin:0;font-size:22px;font-weight:800;line-height:1.15">{{ f.t }}</h3>
+            <p style="margin:0;font-size:16px;line-height:1.5;color:#3A3832">{{ f.b }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+
+  <div aria-label="Buy" role="region" style="margin-top:calc(-1 * clamp(32px,4vw,60px));margin-bottom:clamp(40px,5vw,72px)"><div style="max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,40px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:14px 0;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase">{{ d.name }} · {{ cur.name }} · {{ d.price }} delivered</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="#buy" style="min-height:48px;padding:0 16px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Change colour</a><button type="button" onClick="{{ buyNow }}" style="min-height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Buy now <span aria-hidden="true">→</span></button></div>
+    </div>
+  </div></div>
+  <section aria-label="Gallery" style="padding:0 0 clamp(64px,8vw,120px)">
+    <div style="max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,40px) 16px;display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+      <h2 style="margin:0;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase">Gallery / {{ d.name }} — swipe</h2>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#55524B">{{ d.galleryCount }} IMAGES</span>
+    </div>
+    <div tabindex="0" aria-label="Image gallery, scroll horizontally" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 clamp(16px,3vw,40px);scrollbar-width:thin">
+      <sc-for list="{{ d.gallery }}" as="g" hint-placeholder-count="4">
+        <figure style="margin:0;flex:0 0 auto;scroll-snap-align:start;display:flex;flex-direction:column;gap:8px">
+          <img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="height:clamp(280px,48vw,560px);width:auto;max-width:86vw;object-fit:cover;display:block;background:#E9E5DA">
+          <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:#55524B;text-transform:uppercase">{{ g.cap }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-label="Video" style="padding:0 clamp(16px,3vw,40px) clamp(64px,8vw,120px);max-width:1440px;margin:0 auto">
+    <sc-if value="{{ d.hasTall }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,4vw,64px);align-items:center;background:#111111;color:#F4F1E9;padding:clamp(28px,4vw,56px)">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">{{ d.videoKicker }}</span>
+          <h2 style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.85;text-transform:uppercase">{{ d.videoTitle }}</h2>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#D8D4C9;max-width:40ch">{{ d.videoBody }}</p>
+          <button type="button" onClick="{{ buyNow }}" style="align-self:flex-start;min-height:52px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#F4F1E9;color:#111111">Buy now — {{ d.price }} <span aria-hidden="true">→</span></button>
+        </div>
+        <video data-autoloop="" src="{{ d.video }}" controls="{{ true }}" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" aria-label="{{ d.videoLabel }}" style="justify-self:center;height:min(80vh,746px);width:auto;max-width:100%;aspect-ratio:9/16;object-fit:cover;background:#111111;display:block"></video>
+      </div>
+    </sc-if>
+    <sc-if value="{{ d.hasWide }}" hint-placeholder-val="{{ false }}">
+      <video data-autoloop="" src="{{ d.video }}" poster="{{ d.poster }}" controls="{{ true }}" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" aria-label="{{ d.videoLabel }}" style="width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;display:block"></video>
+    </sc-if>
+    <sc-if value="{{ d.noVideo }}" hint-placeholder-val="{{ true }}">
+      <div style="aspect-ratio:16/9;background:#111111;background-image:repeating-linear-gradient(135deg,rgba(244,241,233,.05) 0 2px,transparent 2px 14px);color:#F4F1E9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px">
+        <span style="width:84px;height:84px;border-radius:50%;background:#FF583D;display:flex;align-items:center;justify-content:center;color:#111111;font-size:28px" aria-hidden="true">▶</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;max-width:44ch;line-height:1.5">[ VIDEO SLOT — {{ d.name }} riding footage from the 79BIKE media folder. Add MP4 + poster frame ]</span>
+      </div>
+    </sc-if>
+  </section>
+
+  <section aria-labelledby="spec-title" style="background:#FFFFFF;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(16px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,4vw,64px)">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">SPEC SHEET / {{ d.code }}</span>
+        <h2 id="spec-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.85;text-transform:uppercase">Every<br>number.</h2>
+        <p style="margin:0;font-size:16px;line-height:1.5;color:#3A3832;max-width:36ch">Figures from 79BIKE's current product documentation. Speed and range are manufacturer-quoted and vary with rider, terrain and conditions.</p>
+        <div role="tablist" aria-label="Specification groups" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
+            <button type="button" role="tab" aria-selected="{{ g.on }}" onClick="{{ g.pick }}" style="min-height:44px;padding:0 14px;border:1.5px solid #111111;background:{{ g.bg }};color:{{ g.fg }};font-family:Archivo,sans-serif;font-weight:700;font-size:14px;cursor:pointer">{{ g.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <dl role="tabpanel" style="margin:0;display:flex;flex-direction:column;border-top:2px solid #111111">
+        <sc-for list="{{ specRows }}" as="r" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:minmax(120px,38%) 1fr;gap:16px;padding:14px 0;border-bottom:1px solid rgba(17,17,17,.14)">
+            <dt style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.04em;color:#55524B;text-transform:uppercase;padding-top:2px">{{ r.k }}</dt>
+            <dd style="margin:0;font-size:17px;font-weight:600;line-height:1.4">{{ r.v }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </div>
+  </section>
+
+
+  <div aria-label="Buy" role="region" style="background:#FFFFFF"><div style="max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,40px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:14px 0;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase">{{ d.name }} · {{ cur.name }} · {{ d.price }} delivered</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="#buy" style="min-height:48px;padding:0 16px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Change colour</a><button type="button" onClick="{{ buyNow }}" style="min-height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Buy now <span aria-hidden="true">→</span></button></div>
+    </div>
+  </div></div>
+  <section aria-labelledby="vs-title" style="padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px);max-width:1440px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,4vw,64px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">{{ d.vsKicker }}</span>
+        <h2 id="vs-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.85;text-transform:uppercase">{{ d.vsTitle }}</h2>
+        <p style="margin:0;font-size:17px;line-height:1.5;color:#3A3832;max-width:40ch">{{ d.vsBody }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px">
+          <a href="/compare" style="height:52px;padding:0 20px;background:#111111;color:#F4F1E9;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px" style-hover="background:#FF583D;color:#111111">Compare the models <span aria-hidden="true">→</span></a>
+          <a href="{{ d.otherHref }}" style="height:52px;padding:0 20px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Explore the {{ d.otherName }} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div style="border:1.5px solid #111111;background:#FFFFFF">
+        <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr;background:#111111;color:#F4F1E9;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em">
+          <span style="padding:12px 14px"></span><span style="padding:12px 14px;color:{{ d.gtHeadColour }}">GT</span><span style="padding:12px 14px;color:{{ d.proHeadColour }}">PRO</span>
+        </div>
+        <sc-for list="{{ vs }}" as="r" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr;border-top:1px solid rgba(17,17,17,.14);font-size:15px">
+            <span style="padding:12px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.04em;color:#55524B;text-transform:uppercase">{{ r.k }}</span>
+            <span style="padding:12px 14px;font-weight:600">{{ r.a }}</span>
+            <span style="padding:12px 14px;font-weight:600">{{ r.b }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Rivals" focus="{{ d.key }}" hint-size="100%,1000px"></dc-import>
+  <dc-import name="DealerAdvantage" hint-size="100%,1200px"></dc-import>
+
+  <div aria-label="Buy" role="region" style="padding:clamp(24px,3vw,40px) 0"><div style="max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,40px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:14px 0;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase">{{ d.name }} · {{ cur.name }} · {{ d.price }} delivered</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="#buy" style="min-height:48px;padding:0 16px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Change colour</a><button type="button" onClick="{{ buyNow }}" style="min-height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Buy now <span aria-hidden="true">→</span></button></div>
+    </div>
+  </div></div>
+
+  <section aria-labelledby="sup-title" style="background:#4355FF;color:#FFFFFF">
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:clamp(28px,4vw,48px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 40px">
+        <h2 id="sup-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(52px,8vw,120px);line-height:.85;text-transform:uppercase">Ordered.<br>Tracked.<br>Supported.</h2>
+        <a href="/buying-and-support" style="height:52px;padding:0 20px;background:#FFFFFF;color:#111111;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#FFFFFF">Full buying &amp; support guide <span aria-hidden="true">→</span></a>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0;border-top:2px solid #FFFFFF">
+        <li style="padding:20px 20px 20px 0;display:flex;flex-direction:column;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px">01 — CHOOSE</span><strong style="font-size:20px">Model &amp; colourway</strong><span style="font-size:15px;line-height:1.5">Pick your Falcon and colourway, then check out right here on the site.</span></li>
+        <li style="padding:20px 20px 20px 0;display:flex;flex-direction:column;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px">02 — PAY</span><strong style="font-size:20px">Card via Stripe</strong><span style="font-size:15px;line-height:1.5">Pay securely by credit or debit card. Your order confirmation arrives by email straight away.</span></li>
+        <li style="padding:20px 20px 20px 0;display:flex;flex-direction:column;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px">03 — TRACK</span><strong style="font-size:20px">Processed &amp; delivered</strong><span style="font-size:15px;line-height:1.5">Processed in 1–3 business days, then tracked delivery in 3–7. Tracking sent to you.</span></li>
+        <li style="padding:20px 20px 20px 0;display:flex;flex-direction:column;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px">04 — RIDE</span><strong style="font-size:20px">We stay your contact</strong><span style="font-size:15px;line-height:1.5">Warranty assistance and genuine replacement parts, through RIDE79.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="faq-title" style="padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px);max-width:1100px;margin:0 auto">
+    <h2 id="faq-title" style="margin:0 0 28px;font-stretch:62%;font-weight:900;font-size:clamp(48px,6vw,88px);line-height:.85;text-transform:uppercase">{{ d.name }} questions</h2>
+    <div style="border-top:2px solid #111111">
+      <sc-for list="{{ d.faqs }}" as="q" hint-placeholder-count="5">
+        <details style="border-bottom:1px solid rgba(17,17,17,.2)">
+          <summary style="cursor:pointer;padding:20px 0;font-size:clamp(18px,1.8vw,22px);font-weight:700;display:flex;justify-content:space-between;gap:16px;list-style:none">{{ q.q }}<span aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;color:#FF583D">+</span></summary>
+          <p style="margin:0 0 22px;font-size:17px;line-height:1.6;color:#3A3832;max-width:68ch">{{ q.a }}</p>
+        </details>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="order" aria-label="Order" style="background:#111111;color:#F4F1E9;scroll-margin-top:110px">
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(16px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,4vw,64px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">START YOUR ORDER / {{ d.code }}</span>
+        <h2 style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(56px,8vw,128px);line-height:.82;text-transform:uppercase">{{ d.orderTitle }}</h2>
+        <p style="margin:0;font-size:18px;line-height:1.5;color:#D8D4C9;max-width:40ch">Pick your colourway and check out securely by card. Your order confirmation arrives by email straight away.</p>
+        <img src="{{ cur.img }}" alt="" aria-hidden="true" loading="lazy" style="width:100%;max-width:560px;height:auto;aspect-ratio:16/10;object-fit:contain;filter:drop-shadow(0 30px 30px rgba(0,0,0,.5))">
+        <p style="margin:0;font-size:15px;color:#B9B5AA">{{ d.price }} · tracked UK mainland delivery included · off-road use only</p>
+      </div>
+      <dc-import name="OrderEnquiry" model="{{ d.key }}" colour="{{ cur.name }}" on-colour="{{ setColour }}" hint-size="100%,760px"></dc-import>
+    </div>
+  </section>
+
+  <sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
+    <div role="region" aria-label="Quick buy" style="position:fixed;left:0;right:0;bottom:0;z-index:55;background:#111111;color:#F4F1E9;border-top:2px solid #FF583D;padding:0 0 env(safe-area-inset-bottom)">
+      <div style="max-width:1440px;margin:0 auto;padding:10px clamp(12px,3vw,40px);display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div style="display:flex;align-items:center;gap:12px;min-width:0">
+          <span aria-hidden="true" style="width:28px;height:28px;border-radius:50%;flex:0 0 auto;border:1px solid rgba(244,241,233,.4);background:{{ cur.swatch }}"></span>
+          <div style="display:flex;flex-direction:column;line-height:1.15;min-width:0">
+            <span style="font-weight:800;font-size:16px">{{ d.name }} · {{ d.price }}</span>
+            <a href="#buy" style="font-size:13px;color:#B9B5AA;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cur.name }} · change</a>
+          </div>
+        </div>
+        <button type="button" onClick="{{ buyNow }}" style="height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:15px;cursor:pointer;flex:0 0 auto" style-hover="background:#F4F1E9;color:#111111">Buy now →</button>
+      </div>
+    </div>
+  </sc-if>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;model&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;gt&quot;,&quot;pro&quot;],&quot;default&quot;:&quot;gt&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  static D = {
+    gt: {
+      key: 'gt', video: '/assets/video/gt-hero-promo-square.mp4', poster: '/assets/gt-detail-shock.webp', videoLabel: 'Falcon GT promo film: close-ups of the logo, frame and components', name: 'Falcon GT', short: 'Falcon ', suffix: 'GT', code: '79-GT', role: 'Flagship / 72V 40Ah', price: '£3,495', coord: 'PEAK 16.8 KW / 590 N·M',
+      pitch: 'The flagship. 16.8 kW peak, 590 N·m and adjustable Fastace suspension — big-bike intent in a 65 kg chassis.',
+      colours: [['Black / Yellow','/assets/gt-black-yellow.webp','#151515','#F2B21B'],['White / Yellow','/assets/gt-white-yellow.webp','#F4F4F2','#F2B21B']],
+      stats: [['16.8','kW','Peak power'],['590','N·m','Max torque'],['59','mph','Quoted top speed'],['40','Ah','72V battery'],['65','kg','Weight incl. battery']],
+      hwTitle: 'Hardware with intent.', hwIntro: 'The GT spends its extra budget where you feel it: power, damping and stopping.',
+      features: [
+        ['A','Fastace shocks, front and rear','Adjustable high- and low-speed compression damping, built for longer life and higher load capacity.','/assets/gt-detail-shock.webp','Close-up of the Falcon GT yellow Fastace rear shock'],
+        ['B','Self-developed high-speed LPMSM','16.8 kW peak and 590 N·m from 79BIKE\'s own permanent-magnet motor. 8 kW rated.','/assets/gt-detail-motor-v2.webp','Close-up of the Falcon GT motor housing and side panel'],
+        ['C','Sine-wave FOC controller','72V sine-wave vector control for smooth, precise delivery from walking pace to full pull.','/assets/gt-detail-dash.webp','Falcon GT TFT dashboard and handlebar controls'],
+        ['D','Lewis racing-grade brakes','Thicker, wider 220 × 2.8 mm discs with E-ABS and traction control.','/assets/gt-detail-brake-v2.webp','Close-up of the Falcon GT Lewis front brake calliper and disc']
+      ],
+      gallery: [['/assets/gt-hero-wheelie.webp','Rider lifting the front wheel of the Falcon GT beside a lake','Front up'],['/assets/gt-lake-reflection.webp','Rider on the black Falcon GT at the water\'s edge','Lakeside'],['/assets/gt-trail-trees.webp','Rider on the Falcon GT among trees by a lake','In the trees'],['/assets/gt-white-moongate.webp','White Falcon GT framed by a circular stone gateway','White / Yellow'],['/assets/gt-white-architecture.webp','White Falcon GT on grass in front of glass architecture','Parked up'],['/assets/gt-white-street.webp','White Falcon GT side profile on a paved road','Side profile']],
+      specs: {
+        Performance: [['Peak power','16.8 kW'],['Rated power','8 kW'],['Max torque','590 N·m'],['Top speed (quoted)','95 km/h (59 mph)'],['Range (quoted)','120 km at 25 km/h (75 miles at 15 mph)'],['Motor','Self-developed high-speed LPMSM'],['Controller','72V sine-wave vector (FOC)']],
+        Battery: [['Battery','72V 40Ah lithium-ion NMC (50S)'],['Rated voltage','72V'],['Charge current','15A'],['Charging time','3–4 hours'],['Protection grade','IP67']],
+        Chassis: [['Frame','Aluminium alloy'],['Suspension','Fastace front & rear, adjustable high/low-speed compression'],['Suspension travel','Front 200 mm / rear 85 mm (as quoted)'],['Brakes','Lewis, 220 × 2.8 mm discs front & rear'],['Rider aids','E-ABS + traction control'],['Tyres','Front 70/100-19, rear 90/90-18'],['Drive','HTD 8M primary belt, 420 chain (112 links)']],
+        Dimensions: [['L × W × H','1869 × 767 × 1098 mm'],['Wheelbase','1260 mm'],['Seat height','830 mm'],['Ground clearance','275 mm'],['Handlebar width','760 mm'],['Weight','65 kg incl. battery'],['Max load','120 kg'],['Rider age (manufacturer)','18–55']],
+        Electronics: [['Dashboard','Smart display with NFC'],['Lighting','LED, star-ring accent light'],['Communication','RS-485 + CAN']]
+      },
+      vsKicker: 'GT VS PRO', vsTitle: 'What the extra £500 buys.', vsBody: '6.8 kW more peak power, 180 N·m more torque, a bigger battery, adjustable Fastace damping and heavier-duty brakes with E-ABS. The Pro is lighter and comes in six colourways.',
+      otherHref: '/falcon-pro', otherName: 'Pro', orderTitle: 'Your GT. Your line.',
+      faqs: [
+        ['Is the Falcon GT road legal?','No. The Falcon GT is an off-road electric dirt bike and is not road legal in the UK. Ride it on private land with the landowner\'s permission, or at tracks and venues that allow electric bikes.'],
+        ['Which colours can I order?','Two colourways: Black / Yellow and White / Yellow. Pick yours on this page and check out online.'],
+        ['How long does delivery take?','Orders are processed within 1–3 business days, then delivered by tracked courier in 3–7 business days. Delivery to UK mainland addresses is included. Highlands and islands, Northern Ireland, the Isle of Man, Isles of Scilly and Channel Islands are outside standard delivery. Contact us before ordering and we\'ll confirm whether we can deliver and any extra charge. We send you the tracking details as soon as your bike is on its way.'],
+        ['What does the warranty cover?','A 12-month limited manufacturer warranty covering the motor, frame, battery, display, throttle, controller, LED lights and electrical wiring. Claims are handled through RIDE79 as your UK dealer contact, subject to 79BIKE\'s warranty terms.'],
+        ['How does the GT compare with a Sur-Ron Ultra Bee?','Both quote a 59 mph top speed. The Ultra Bee HP X has more peak power (24.5 kW vs 16.8 kW) and a bigger battery. The GT is 23.5 kg lighter, quotes more torque (590 vs 520 N·m — each manufacturer measures differently) and costs around £2,100 less, with adjustable Fastace suspension, E-ABS and traction control as standard.'],
+        ['Why buy from RIDE79 rather than 79BIKE directly?','You pay £304 less with delivery included (79BIKE lists the GT at £3,699 plus £100 delivery, October 2026), we can put together packages and deals the manufacturer doesn\'t offer, and you get a permanent London-based contact who knows who to speak to inside 79BIKE for warranty and parts.'],
+        ['Can I get parts after I buy?','Yes. RIDE79 remains your contact for genuine 79BIKE replacement parts and warranty assistance after delivery.']
+      ]
+    },
+    pro: {
+      key: 'pro', defaultCi: 5, video: '/assets/video/pro-unboxing-ride.mp4', tall: true, videoLabel: 'Falcon Pro owner film: unboxing, assembly and first ride in the city', videoKicker: 'OWNER FILM / FALCON PRO', videoTitle: 'Box to ride.', videoBody: 'Unboxing, assembly and the first ride, filmed by an owner. Your Pro arrives ready to put together and ride.', name: 'Falcon Pro', short: 'Falcon ', suffix: 'Pro', code: '79-PRO', role: 'Agile / 72V 35Ah', price: '£2,995', coord: 'PEAK 10 KW / 410 N·M',
+      pitch: 'The sharp one. A full 72V platform at 59.2 kg, 410 N·m on tap, and six factory colourways to make it yours.',
+      colours: [['Black / Purple','/assets/pro-black-purple.png','#151515','#7B4FE0'],['Black / Red','/assets/pro-black-red.png','#151515','#E8402E'],['Black / Yellow','/assets/pro-black-yellow.png','#151515','#F2B21B'],['Silver / Purple','/assets/pro-silver-purple.png','#C9CBCC','#7B4FE0'],['Silver / Red','/assets/pro-silver-red.png','#C9CBCC','#E8402E'],['Silver / Yellow','/assets/pro-silver-yellow.png','#C9CBCC','#F2B21B']],
+      stats: [['10','kW','Peak power'],['410','N·m','Max torque'],['56','mph','Quoted top speed'],['35','Ah','72V battery'],['59.2','kg','Weight incl. battery']],
+      hwTitle: 'Light. Loud on spec.', hwIntro: 'Everything you need to ride hard, in a chassis that\'s easy to throw around.',
+      features: [
+        ['A','Large LED matrix headlight','Three high-output LED units with integrated high and low beam.','/assets/pro-detail-headlight.webp','Falcon Pro triple LED matrix headlight lit'],
+        ['B','10 kW motor','Strong acceleration and 410 N·m of torque for demanding off-road terrain. 5 kW rated.','/assets/pro-detail-motor.webp','Falcon Pro hub motor housing with light ring'],
+        ['C','72V 35Ah lithium battery','High-capacity NMC pack built on M50T cells, for long sessions and enhanced safety. IP67.','/assets/pro-detail-battery.webp','Falcon Pro 72V lithium battery pack'],
+        ['D','Smart TFT dashboard with NFC','Speed, battery status and ride data in one display. NFC one-touch start and key unlock.','/assets/pro-detail-dash-v2.webp','Falcon Pro TFT dashboard lit on the handlebars']
+      ],
+      gallery: [['/assets/pro-air-jump.webp','Rider jumping the Falcon Pro off a grass ramp','Airtime'],['/assets/pro-wheelie-steps.webp','Rider wheeling the Black / Purple Falcon Pro by glass architecture','Front up'],['/assets/pro-water-splash.webp','Rider splashing the Black / Yellow Falcon Pro through a stream','Water crossing'],['/assets/pro-desert-run.webp','Rider on the Falcon Pro at speed across red dirt','Flat out'],['/assets/pro-dirt-track.webp','Silver / Purple Falcon Pro parked on a dirt track','Silver / Purple'],['/assets/pro-silver-yellow-garage.webp','Silver / Yellow Falcon Pro in an underground car park','Silver / Yellow']],
+      specs: {
+        Performance: [['Peak power','10 kW'],['Rated power','5 kW'],['Max torque','410 N·m'],['Top speed (quoted)','90 km/h (56 mph)'],['Range (quoted)','120 km at 25 km/h (75 miles at 15 mph)'],['Motor','LPMSM'],['Controller','72V sine-wave vector']],
+        Battery: [['Battery','72V 35Ah lithium-ion NMC (M50T cells)'],['Rated voltage','72V'],['Charge current','10A'],['Charging time','3–4 hours'],['Protection grade','IP67']],
+        Chassis: [['Frame','Triple-beam forged aluminium alloy'],['Suspension travel','Front 200 mm / rear 85 mm (as quoted)'],['Brakes','203 × 2.3 mm discs front & rear'],['Tyres','70/100-19 front & rear'],['Drive','HTD 8M primary belt, 420 chain (106 links)']],
+        Dimensions: [['L × W × H','1869 × 767 × 1098 mm'],['Wheelbase','1260 mm'],['Seat height','830 mm'],['Ground clearance','275 mm'],['Handlebar width','760 mm'],['Weight','59.2 kg incl. battery'],['Max load','120 kg'],['Rider age (manufacturer)','18–55']],
+        Electronics: [['Dashboard','Smart TFT with NFC one-touch start'],['Headlight','LED matrix, three LEDs, high/low beam'],['Lighting','Star-ring accent light'],['Communication','RS-485 + CAN']]
+      },
+      vsKicker: 'PRO VS GT', vsTitle: 'Same platform. Lighter feet.', vsBody: 'The Pro shares the GT\'s 72V architecture, wheelbase and seat height, weighs 5.8 kg less, and runs matching 19-inch wheels. Want maximum power and adjustable damping? That\'s the GT.',
+      otherHref: '/falcon-gt', otherName: 'GT', orderTitle: 'Pick it. Ride it.',
+      faqs: [
+        ['Is the Falcon Pro road legal?','No. The Falcon Pro is an off-road electric dirt bike and is not road legal in the UK. Ride it on private land with permission, or at tracks and venues that allow electric bikes.'],
+        ['Which colourways are available?','Six factory colourways: Black or Silver frame, with Purple, Red or Yellow accents. Pick yours on this page and check out online.'],
+        ['How long does delivery take?','Orders are processed within 1–3 business days, then delivered by tracked courier in 3–7 business days. Delivery to UK mainland addresses is included. Highlands and islands, Northern Ireland, the Isle of Man, Isles of Scilly and Channel Islands are outside standard delivery. Contact us before ordering and we\'ll confirm whether we can deliver and any extra charge. We send you the tracking details as soon as your bike is on its way.'],
+        ['What does the warranty cover?','A 12-month limited manufacturer warranty covering the motor, frame, battery, display, throttle, controller, LED lights and electrical wiring, handled through RIDE79 and subject to 79BIKE\'s warranty terms.'],
+        ['How does the Pro compare with a Sur-Ron Light Bee X?','Against the MY26 Light Bee X (RRP £3,295), the Pro is £300 less delivered, runs the same 72V 35Ah battery class at a near-identical weight, quotes more torque (410 vs 295 N·m) and a higher top speed (53 vs 50 mph), matches it on 10 kW peak power, and adds NFC smart start, a 120 kg max load and six factory colourways.'],
+        ['Why buy from RIDE79 rather than 79BIKE directly?','You pay £304 less with delivery included (79BIKE lists the Pro at £3,199 plus £100 delivery, October 2026), we can offer packages and deals the manufacturer doesn\'t, and you get a permanent London-based contact who manages warranty and parts with 79BIKE for you.'],
+        ['Is the Pro a good first 72V bike?','It\'s the more accessible of the two Falcons — lighter, with smoother-to-manage power than the GT — but it is still a serious machine. Wear full protective kit and build up gradually.']
+      ]
+    }
+  };
+  state = { ci: this.props.model === 'pro' ? 5 : 0, group: 'Performance', wide: true, scrolled: false };
+  componentDidMount() {
+    this.u = () => this.setState({ wide: window.innerWidth >= 900, scrolled: window.scrollY > 640 && (window.innerHeight + window.scrollY) < document.body.scrollHeight - 900 });
+    this.u(); window.addEventListener('resize', this.u); window.addEventListener('scroll', this.u, { passive: true });
+    const go = () => { const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches; document.querySelectorAll('video[data-autoloop]').forEach(v => { v.muted = true; v.loop = true; v.playsInline = true; if (rm) { v.pause(); return; } if (v.paused) { const q = v.play(); q && q.catch(() => {}); } }); };
+    this.vt = [0, 300, 1200].map(ms => setTimeout(go, ms));
+  }
+  componentWillUnmount() { (this.vt || []).forEach(clearTimeout); window.removeEventListener('resize', this.u); window.removeEventListener('scroll', this.u); }
+  renderVals() {
+    const r = Component.D[this.props.model === 'pro' ? 'pro' : 'gt'];
+    const { ci, group } = this.state;
+    const cols = r.colours.map(([name, img, a, b], i) => ({ name, img, num: '0' + (i + 1), alt: `79BIKE ${r.name} in ${name}, side view`, swatch: `linear-gradient(135deg, ${a} 0 52%, ${b} 52% 100%)`, on: i === ci, ring: i === ci ? '2px solid #4355FF' : '2px solid transparent', pick: () => this.setState({ ci: i }) }));
+    const P = Component.D.pro.stats, G = Component.D.gt.stats;
+    return {
+      d: { ...r, hasWide: !!r.video && !r.tall, hasTall: !!r.video && !!r.tall, noVideo: !r.video, colourCount: '0' + r.colours.length, galleryCount: r.gallery.length,
+        stats: r.stats.map(([v, u, l], i) => ({ v, u, l, code: 'S.0' + (i + 1) })),
+        features: r.features.map(([k, t, b, img, alt]) => ({ k, t, b, img, alt })),
+        gallery: r.gallery.map(([src, alt, cap], i) => ({ src, alt, cap: String(i + 1).padStart(2, '0') + ' / ' + cap })),
+        faqs: r.faqs.map(([q, a]) => ({ q, a })),
+        proHeadColour: r.key === 'pro' ? '#FF583D' : '#F4F1E9', gtHeadColour: r.key === 'gt' ? '#FF583D' : '#F4F1E9' },
+      cur: cols[ci] || cols[0], colours: cols,
+      groups: Object.keys(r.specs).map(g => ({ label: g, on: g === group, bg: g === group ? '#111111' : '#FFFFFF', fg: g === group ? '#F4F1E9' : '#111111', pick: () => this.setState({ group: g }) })),
+      specRows: r.specs[group].map(([k, v]) => ({ k, v })),
+      vs: [['Price','£2,995','£3,495'],['Peak power','10 kW','16.8 kW'],['Torque','410 N·m','590 N·m'],['Top speed (quoted)','56 mph','59 mph'],['Battery','72V 35Ah','72V 40Ah'],['Weight','59.2 kg','65 kg'],['Wheels','19" / 19"','19" / 18"'],['Brakes','203 × 2.3 mm','220 × 2.8 mm, E-ABS'],['Colours','6','2']].map(([k, a, b]) => ({ k, a: b, b: a })),
+      showBar: this.state.scrolled,
+      buyNow: () => { const c = cols[ci] || cols[0]; window.RIDE79 && window.RIDE79.go(r.key, c.name); },
+      setColour: (n) => { const i = r.colours.findIndex(c => c[0] === n); if (i >= 0 && i !== this.state.ci) this.setState({ ci: i }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

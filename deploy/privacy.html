@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="icon" href="/brand/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/brand/favicon/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/brand/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#111111">
+  <title>Privacy Policy | RIDE79</title>
+  <meta name="description" content="How RIDE79 collects, uses and protects your personal data when you order a 79BIKE Falcon, contact us or make a warranty claim.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RIDE79">
+  <meta property="og:image" content="https://ride79.co.uk/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ride79.co.uk/privacy">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+  <style>*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;background:#F4F1E9;color:#111111;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#111111}a:hover{color:#FF583D}:focus-visible{outline:3px solid #4355FF;outline-offset:2px}</style>
+</helmet>
+<dc-import name="Nav" hint-size="100%,100px"></dc-import>
+<main id="main" style="font-family:Archivo,sans-serif;color:#111111;background:#F4F1E9">
+  <section aria-labelledby="p-title" style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(16px,3vw,40px) clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:18px">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#55524B">PRIVACY POLICY / LAST UPDATED 13 OCTOBER 2026</span>
+    <h1 id="p-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(60px,10vw,152px);line-height:.8;text-transform:uppercase">Your data.<br><span style="color:#FF583D">Only what we need.</span></h1>
+    <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;max-width:58ch;text-wrap:pretty">We collect the minimum needed to deliver your bike and support it afterwards. We don't sell your data, and we don't use advertising or tracking cookies.</p>
+  </section>
+
+  <section aria-label="Data controller" style="background:#111111;color:#F4F1E9">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,44px) clamp(16px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px 32px">
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">DATA CONTROLLER</span><span style="font-size:17px;line-height:1.5">Dillon Heger, sole trader, trading as RIDE79</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">ADDRESS</span><span style="font-size:17px;line-height:1.5">12a City Business Centre<br>London SE16 2XB</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">PRIVACY QUESTIONS</span><a href="mailto:hello@ride79.co.uk" style="font-size:17px;color:#F4F1E9" style-hover="color:#FF583D">hello@ride79.co.uk</a></div>
+    </div>
+  </section>
+
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,88px) clamp(16px,3vw,40px);display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-start">
+    <nav aria-label="Sections" style="flex:1 1 240px;max-width:320px;display:flex;flex-direction:column;border-top:2px solid #111111">
+      <sc-for list="{{ clauses }}" as="c" hint-placeholder-count="9">
+        <a href="{{ c.href }}" style="display:grid;grid-template-columns:36px 1fr;gap:8px;min-height:44px;align-items:center;border-bottom:1px solid rgba(17,17,17,.14);text-decoration:none;font-size:15px;font-weight:600" style-hover="color:#FF583D"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF">{{ c.n }}</span>{{ c.t }}</a>
+      </sc-for>
+    </nav>
+    <div style="flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:clamp(36px,4vw,56px)">
+      <sc-for list="{{ clauses }}" as="c" hint-placeholder-count="9">
+        <section id="{{ c.id }}" aria-labelledby="{{ c.hid }}" style="scroll-margin-top:110px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">{{ c.n }}</span>
+          <h2 id="{{ c.hid }}" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(36px,4.5vw,60px);line-height:.88;text-transform:uppercase">{{ c.t }}</h2>
+          <sc-for list="{{ c.ps }}" as="p" hint-placeholder-count="2">
+            <p style="margin:0;font-size:17px;line-height:1.6;color:#2A2925;max-width:66ch;text-wrap:pretty">{{ p }}</p>
+          </sc-for>
+          <sc-if value="{{ c.hasList }}" hint-placeholder-val="{{ false }}">
+            <ul style="margin:0;padding-left:20px;font-size:17px;line-height:1.6;color:#2A2925;max-width:66ch;display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ c.li }}" as="x" hint-placeholder-count="3"><li>{{ x }}</li></sc-for>
+            </ul>
+          </sc-if>
+        </section>
+      </sc-for>
+      <p style="margin:0;padding:18px 20px;background:#111111;color:#F4F1E9;font-size:15px;line-height:1.55">Questions or a request about your data? Email <a href="mailto:hello@ride79.co.uk" style="color:#F4F1E9" style-hover="color:#FF583D">hello@ride79.co.uk</a>. We reply within one month.</p>
+    </div>
+  </div>
+</main>
+<dc-import name="Footer" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static C = [
+    ['collect', 'What we collect', [
+      'We only collect personal data you give us, or that is created when you order or contact us:'
+    ], [
+      'Orders: your name, email, phone number, delivery address, the model and colourway you bought, and payment confirmation. Stripe handles your card details; we never see or store your full card number.',
+      'Enquiries: your name, email or phone number, the topic and your message, sent through our contact form, by email, phone or WhatsApp.',
+      'Warranty and support: your order number, a description of the fault, and any photos or videos you send.',
+      'Website: basic technical data such as your IP address and browser type, which our hosting and security providers log automatically.'
+    ]],
+    ['use', 'How we use it', [
+      'We use your data to:'
+    ], [
+      'process your payment, deliver your bike and send you tracking details',
+      'answer your questions and arrange bank-transfer orders you ask for',
+      'handle cancellations, returns, refunds, warranty claims and replacement parts',
+      'keep the business and tax records the law requires',
+      'protect the website and our customers against fraud and misuse'
+    ]],
+    ['basis', 'Our legal reasons', [
+      'Under UK data protection law (the UK GDPR and Data Protection Act 2018) we rely on: contract, to take and fulfil your order and support your bike; legal obligation, to keep tax and accounting records; and legitimate interests, to answer enquiries, prevent fraud and run the site securely.',
+      'We don’t send marketing emails or messages. If we ever want to, we will ask for your consent first, and you can withdraw it at any time.'
+    ]],
+    ['share', 'Who we share it with', [
+      'We share only what each provider needs to do its job:'
+    ], [
+      'Stripe: card payments, receipts and fraud checks',
+      'Formspree: delivers contact-form messages to our inbox',
+      'WhatsApp (Meta): if you choose to message us there',
+      'Our courier: your name, address and phone number, to deliver your bike',
+      '79BIKE (Hong Kong Yingteng International Trade Limited): order and fault details needed to fulfil your order and assess warranty claims',
+      'GitHub and Cloudflare: host and secure this website',
+      'Our accountant, HMRC or other authorities where the law requires it'
+    ]],
+    ['transfers', 'Data outside the UK', [
+      'Some of these providers process data outside the UK, including in the United States and Hong Kong. Where they do, the transfer is covered by UK adequacy regulations (including the UK–US data bridge) or by approved contract terms such as the UK International Data Transfer Agreement or Addendum.'
+    ]],
+    ['keep', 'How long we keep it', [
+      'Order, payment, refund and warranty records: 6 years after the end of the tax year in which you ordered, as required for tax and to deal with any claims.',
+      'Enquiries that don’t lead to an order: up to 12 months after our last contact.',
+      'Website logs: as long as our hosting and security providers keep them, normally no more than a few weeks.'
+    ]],
+    ['cookies', 'Cookies', [
+      'This site doesn’t use analytics, advertising or tracking cookies. Cloudflare may set a strictly necessary security cookie to protect the site. When you check out, Stripe sets its own cookies on its payment pages to process your payment and prevent fraud; see Stripe’s privacy policy for details. Strictly necessary cookies don’t need your consent.'
+    ]],
+    ['rights', 'Your rights', [
+      'You have the right to:'
+    ], [
+      'ask for a copy of the personal data we hold about you',
+      'have inaccurate data corrected',
+      'ask us to delete your data, where we don’t need to keep it by law',
+      'object to or restrict how we use it',
+      'receive your data in a portable format',
+      'withdraw consent, where we rely on it'
+    ]],
+    ['complaints', 'Complaints and changes', [
+      'To make a request, email hello@ride79.co.uk. We may need to confirm your identity and will reply within one month. Requests are free.',
+      'If you’re unhappy with how we handle your data, please tell us first. You can also complain to the Information Commissioner’s Office at ico.org.uk or on 0303 123 1113.',
+      'We will update this policy if how we use data changes. The date at the top shows when it was last updated.'
+    ]]
+  ];
+  renderVals() {
+    return { clauses: Component.C.map(([id, t, ps, li], i) => ({ id, hid: id + '-h', t, ps, li: li || [], hasList: !!li, n: String(i + 1).padStart(2, '0'), href: '#' + id })) };
+  }
+}
+</script>
+</body>
+</html>

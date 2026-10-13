@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<section id="why-ride79" aria-labelledby="dv-title" style="background:#F4F1E9;color:#111111;font-family:Archivo,sans-serif;scroll-margin-top:100px">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:clamp(28px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px 64px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">RIDE79 VS BUYING DIRECT</span>
+        <h2 id="dv-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(56px,8.5vw,132px);line-height:.82;text-transform:uppercase">Same bike.<br><span style="color:#FF583D">Better deal.</span><br>UK contact.</h2>
+      </div>
+      <p style="margin:0;font-size:18px;line-height:1.55;color:#3A3832;max-width:46ch">You can buy a Falcon straight from 79BIKE. Here's why riders buy through us instead: a lower price with delivery included, room to put a package together, and a London-based dealer who knows exactly who to call inside 79BIKE when you need something.</p>
+    </div>
+    <div style="border:1.5px solid #111111;background:#FFFFFF;overflow:hidden">
+      <div style="display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) minmax(0,1fr)">
+        <span style="padding:14px"></span>
+        <span style="padding:14px;background:#111111;color:#F4F1E9;font-stretch:62%;font-weight:900;font-size:clamp(24px,2.6vw,34px);line-height:1;text-transform:uppercase">RIDE<span style="color:#FF583D">79</span></span>
+        <span style="padding:14px;font-stretch:62%;font-weight:900;font-size:clamp(24px,2.6vw,34px);line-height:1;text-transform:uppercase;color:#55524B;border-left:1px solid rgba(17,17,17,.14)">79BIKE direct</span>
+      </div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) minmax(0,1fr);border-top:1px solid rgba(17,17,17,.14)">
+          <span style="padding:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.04em;color:#55524B;text-transform:uppercase;line-height:1.4">{{ r.k }}</span>
+          <span style="padding:14px;font-size:clamp(15px,1.5vw,17px);font-weight:700;line-height:1.4;background:#FFF4F1">{{ r.a }}</span>
+          <span style="padding:14px;font-size:clamp(15px,1.5vw,17px);line-height:1.4;color:#3A3832;border-left:1px solid rgba(17,17,17,.14)">{{ r.b }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+      <div style="border-top:3px solid #111111;padding-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font-stretch:62%;font-weight:900;font-size:56px;line-height:.85;color:#FF583D">£304</span><strong style="font-size:18px">Less than buying direct</strong><span style="font-size:15px;line-height:1.5;color:#3A3832">On either Falcon, against 79BIKE's UK list price plus £100 delivery.</span></div>
+      <div style="border-top:3px solid #111111;padding-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font-stretch:62%;font-weight:900;font-size:56px;line-height:.85">PKG</span><strong style="font-size:18px">Packages &amp; deals</strong><span style="font-size:15px;line-height:1.5;color:#3A3832">The manufacturer sells at a fixed price. We can be flexible — ask about kit, spares and accessory bundles.</span></div>
+      <div style="border-top:3px solid #111111;padding-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font-stretch:62%;font-weight:900;font-size:56px;line-height:.85">LDN</span><strong style="font-size:18px">A permanent UK contact</strong><span style="font-size:15px;line-height:1.5;color:#3A3832">UK number, UK hours, one person who knows your bike and your order.</span></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+      <a href="/falcon-gt#order" style="height:56px;padding:0 22px;background:#FF583D;color:#111111;text-decoration:none;font-weight:800;font-size:17px;display:flex;align-items:center;gap:12px" style-hover="background:#111111;color:#F4F1E9">Get your GT price →</a>
+      <a href="/contact" style="height:56px;padding:0 20px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Ask about a package</a>
+      <span style="font-size:13px;color:#55524B;max-width:52ch;line-height:1.5">79BIKE UK prices checked October 2026 (GT £3,699, Pro £3,199, plus delivery). Manufacturer promotions vary.</span>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { rows: [
+      ['Falcon GT', '£3,495, delivered', '£3,699 + £100 delivery'],
+      ['Falcon Pro', '£2,995, delivered', '£3,199 + £100 delivery'],
+      ['Pricing', 'Flexible — packages and deals available', 'Fixed listed price'],
+      ['Your contact', 'London-based dealer, UK contact details', 'Manufacturer support team, based in China'],
+      ['Warranty claims', 'We manage it with 79BIKE for you — we know who to speak to', 'You deal with the manufacturer yourself'],
+      ['Parts', 'We source and chase genuine parts for you', 'Order and follow up yourself'],
+      ['Warranty cover', '12-month limited manufacturer warranty', '12-month limited manufacturer warranty']
+    ].map(([k, a, b]) => ({ k, a, b })) };
+  }
+}
+</script>
+</body>
+</html>

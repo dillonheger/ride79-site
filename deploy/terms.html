@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="icon" href="/brand/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/brand/favicon/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/brand/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#111111">
+  <title>Terms of Sale, Cancellations &amp; Returns | RIDE79</title>
+  <meta name="description" content="RIDE79 terms of sale for the 79BIKE Falcon GT and Falcon Pro: ordering, payment, UK mainland delivery, your 14-day right to cancel, returns, refunds and faulty goods.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RIDE79">
+  <meta property="og:image" content="https://ride79.co.uk/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ride79.co.uk/terms">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+  <style>*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;background:#F4F1E9;color:#111111;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#111111}a:hover{color:#FF583D}:focus-visible{outline:3px solid #4355FF;outline-offset:2px}</style>
+</helmet>
+<dc-import name="Nav" active="buying" hint-size="100%,100px"></dc-import>
+<main id="main" style="font-family:Archivo,sans-serif;color:#111111;background:#F4F1E9">
+  <section aria-labelledby="t-title" style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(16px,3vw,40px) clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:18px">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#55524B">TERMS OF SALE / LAST UPDATED 13 OCTOBER 2026</span>
+    <h1 id="t-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(60px,10vw,152px);line-height:.8;text-transform:uppercase">Terms of sale.<br><span style="color:#FF583D">14 days to change your mind.</span></h1>
+    <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;max-width:58ch;text-wrap:pretty">These terms apply when you buy a Falcon GT or Falcon Pro from RIDE79. Please read them before you order. They don't affect your legal rights as a consumer.</p>
+  </section>
+
+  <section aria-label="Seller details" style="background:#111111;color:#F4F1E9">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,44px) clamp(16px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px 32px">
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">SELLER</span><span style="font-size:17px;line-height:1.5">Dillon Heger, sole trader, trading as RIDE79</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">ADDRESS</span><span style="font-size:17px;line-height:1.5">12a City Business Centre<br>London SE16 2XB</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">EMAIL</span><a href="mailto:hello@ride79.co.uk" style="font-size:17px;color:#F4F1E9" style-hover="color:#FF583D">hello@ride79.co.uk</a></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">PHONE / WHATSAPP</span><a href="tel:+447875991471" style="font-size:17px;color:#F4F1E9" style-hover="color:#FF583D">+44 7875 991471</a></div>
+    </div>
+  </section>
+
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,88px) clamp(16px,3vw,40px);display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-start">
+    <nav aria-label="Sections" style="flex:1 1 240px;max-width:320px;display:flex;flex-direction:column;border-top:2px solid #111111">
+      <sc-for list="{{ toc }}" as="c" hint-placeholder-count="10">
+        <a href="{{ c.href }}" style="display:grid;grid-template-columns:36px 1fr;gap:8px;min-height:44px;align-items:center;border-bottom:1px solid rgba(17,17,17,.14);text-decoration:none;font-size:15px;font-weight:600" style-hover="color:#FF583D"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF">{{ c.n }}</span>{{ c.t }}</a>
+      </sc-for>
+    </nav>
+    <div style="flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:clamp(36px,4vw,56px)">
+      <sc-for list="{{ clauses }}" as="c" hint-placeholder-count="10">
+        <section id="{{ c.id }}" aria-labelledby="{{ c.hid }}" style="scroll-margin-top:110px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">{{ c.n }}</span>
+          <h2 id="{{ c.hid }}" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(36px,4.5vw,60px);line-height:.88;text-transform:uppercase">{{ c.t }}</h2>
+          <sc-for list="{{ c.ps }}" as="p" hint-placeholder-count="2">
+            <p style="margin:0;font-size:17px;line-height:1.6;color:#2A2925;max-width:66ch;text-wrap:pretty">{{ p }}</p>
+          </sc-for>
+          <sc-if value="{{ c.hasList }}" hint-placeholder-val="{{ false }}">
+            <ul style="margin:0;padding-left:20px;font-size:17px;line-height:1.6;color:#2A2925;max-width:66ch;display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ c.li }}" as="x" hint-placeholder-count="3"><li>{{ x }}</li></sc-for>
+            </ul>
+          </sc-if>
+        </section>
+      </sc-for>
+
+      <section id="form" aria-labelledby="form-title" style="scroll-margin-top:110px;border:1.5px solid #111111;background:#FFFFFF;display:flex;flex-direction:column">
+        <div style="background:#111111;color:#F4F1E9;padding:14px 20px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em">MODEL CANCELLATION FORM</div>
+        <div style="padding:clamp(18px,3vw,28px);display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.6">
+          <h2 id="form-title" style="margin:0;font-size:22px;font-weight:800">Copy, complete and email this to hello@ride79.co.uk</h2>
+          <p style="margin:0;color:#3A3832">You don't have to use this form. Any clear written statement is enough.</p>
+          <p style="margin:0;padding:16px;border-left:0;background:#F4F1E9;font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.75;white-space:pre-line">To: Dillon Heger, trading as RIDE79, 12a City Business Centre, London SE16 2XB · hello@ride79.co.uk
+I hereby give notice that I cancel my contract of sale of the following goods:
+Model and colourway:
+Order number:
+Ordered on / received on:
+Name:
+Address:
+Signature (only if sent on paper):
+Date:</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <a href="mailto:hello@ride79.co.uk?subject=Cancellation%20notice%20%E2%80%94%20RIDE79%20order" style="height:52px;padding:0 20px;background:#FF583D;color:#111111;text-decoration:none;font-weight:800;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Email a cancellation <span aria-hidden="true">→</span></a>
+            <a href="/warranty" style="height:52px;padding:0 20px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Fault? See warranty</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+<dc-import name="Footer" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static C = [
+    ['about', 'About these terms', [
+      'You are buying from Dillon Heger, a sole trader trading as RIDE79 (“we”, “us”), an authorised UK dealer for 79BIKE. Our contact details are shown at the top of this page.',
+      'These terms apply to consumers buying for personal use. We may update them from time to time; the version on this page when you order is the one that applies to your order.'
+    ]],
+    ['bikes', 'Off-road use only', [
+      'The Falcon GT and Falcon Pro are off-road electric motorcycles. They are not road legal in the UK and must not be ridden on public roads, pavements, cycle paths or other public land.',
+      'You are responsible for riding legally and safely: on private land with the landowner’s permission, or at venues that allow electric dirt bikes, wearing suitable protective equipment. Specifications, top speeds and range figures are as quoted by 79BIKE and vary with rider weight, terrain and conditions.'
+    ]],
+    ['ordering', 'Ordering and payment', [
+      'You order and pay online by card through Stripe, our payment provider. Your Stripe receipt confirms we have received your order and payment, and our contract with you starts when that confirmation is sent.',
+      'We check stock after payment. If the colourway you chose is unavailable, we will contact you to offer an alternative colourway or a full refund, at your choice. If we can’t fulfil your order for any other reason, we will refund you in full within 14 days.',
+      'You can also pay by bank transfer on request. We will send you a written order first, and the contract starts when we confirm receipt of your payment.'
+    ]],
+    ['price', 'Price', [
+      'Prices are shown in pounds sterling. The price you pay is the price shown when you order and includes tracked delivery to a UK mainland address. If we have made an obvious pricing error, we will contact you before dispatch and you can choose to continue at the correct price or cancel for a full refund.'
+    ]],
+    ['delivery', 'Delivery', [
+      'We deliver to UK mainland addresses only: England, Wales and mainland Scotland. Orders are processed within 1–3 business days, then delivered by tracked courier in 3–7 business days. These are estimates, not guaranteed dates; we will send tracking details as soon as we have them.',
+      'Standard delivery does not cover the following. Please contact us before ordering and we will confirm whether we can deliver and whether there is an extra charge:'
+    ], [
+      'the Scottish Highlands and Scottish islands',
+      'Northern Ireland',
+      'the Isle of Man, Isles of Scilly and Channel Islands',
+      'BFPO and addresses outside the UK'
+    ]],
+    ['receiving', 'When your bike arrives', [
+      'Someone aged 18 or over must be available to receive the bike. Please check the packaging and the bike when it arrives and tell us about any delivery damage or missing parts as soon as you can, ideally within 7 days, with photos or a short video. This helps us claim from the courier quickly. It doesn’t limit your legal rights.',
+      'The bike is your responsibility from the moment it is delivered to you or someone you nominate. Ownership passes to you once we have received full payment. Please keep the original packaging for at least 14 days in case you want to return the bike.'
+    ]],
+    ['cancel', 'Your right to cancel', [
+      'You can cancel your order for any reason within 14 days, starting the day after the bike is delivered to you. You can also cancel at any time before delivery.',
+      'To cancel, tell us clearly in writing, by email to hello@ride79.co.uk or by post. You can use the model cancellation form below, but you don’t have to. Your message just needs to reach us before the 14 days run out.',
+      'If you cancel before we dispatch the bike, we will refund you in full. If the bike is already on its way, please refuse delivery or follow the return steps below.'
+    ]],
+    ['returns', 'Returning the bike', [
+      'Return the bike within 14 days of telling us you are cancelling. Contact us first so we can give you the return address and instructions. Please don’t send a bike back without speaking to us.',
+      'Unless the bike is faulty or not as described, you pay the cost of returning it. A bike can’t be returned by post, so it needs a courier or van collection. This typically costs around £100–£200 depending on your location, within the UK mainland, and we can arrange the collection for you at cost if you prefer.',
+      'Pack the bike securely, ideally in its original packaging, with the charger, keys, manuals and everything else it came with.'
+    ]],
+    ['refunds', 'Refunds', [
+      'We will refund the full price you paid, including the delivery included in it, to your original payment method. We do this within 14 days of receiving the bike back, or of you giving us proof that you have sent it back, whichever is sooner. We don’t charge cancellation, restocking or processing fees.',
+      'You may handle and inspect the bike as you would in a shop. If the bike has been handled beyond that, for example ridden, used outdoors, charged and run, modified, or returned dirty, scuffed or incomplete, we may reduce your refund to reflect the loss in value. We will explain any reduction in writing. If you cancel before delivery, your refund will be made within 14 days of you telling us.'
+    ]],
+    ['faulty', 'If something is wrong', [
+      'We are legally required to supply a bike that is of satisfactory quality, fit for purpose and as described. Under the Consumer Rights Act 2015, if the bike is faulty you are entitled to reject it for a full refund within 30 days of delivery; after that, to a repair or replacement, and if that fails, a price reduction or refund. For faulty bikes we cover reasonable return costs.',
+      'In addition, every bike comes with 79BIKE’s 12-month limited warranty against manufacturing defects, handled through RIDE79. See our Warranty page for what it covers and how to claim. The warranty doesn’t replace or limit your legal rights.'
+    ]],
+    ['liability', 'Our responsibility to you', [
+      'If we break these terms, we are responsible for loss or damage you suffer that is a foreseeable result of our breach. We are not responsible for loss that isn’t foreseeable, or for business losses: the bikes are sold for private use.',
+      'Nothing in these terms limits our liability for death or personal injury caused by our negligence, for fraud, or for anything else that can’t legally be limited. We aren’t responsible for injury, damage or legal consequences resulting from riding on public roads, riding without suitable protective equipment, modification, or use against the owner’s manual.',
+      'We aren’t responsible for delays caused by events outside our control, such as courier disruption or severe weather. If one happens, we will tell you and keep the delay as short as we can.'
+    ]],
+    ['disputes', 'Complaints and the law', [
+      'If you are unhappy with anything, contact us first at hello@ride79.co.uk and we will try to put it right quickly.',
+      'These terms are governed by the law of England and Wales. You can bring proceedings in the courts of England and Wales, or, if you live in Scotland or Northern Ireland, in your local courts.'
+    ]]
+  ];
+  renderVals() {
+    const C = Component.C.map(([id, t, ps, li], i) => ({ id, hid: id + '-h', t, ps, li: li || [], hasList: !!li, n: String(i + 1).padStart(2, '0'), href: '#' + id }));
+    return { clauses: C, toc: [...C, { n: '—', t: 'Cancellation form', href: '#form' }] };
+  }
+}
+</script>
+</body>
+</html>

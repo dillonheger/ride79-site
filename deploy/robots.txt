@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /order-confirmed
+Sitemap: https://ride79.co.uk/sitemap.xml

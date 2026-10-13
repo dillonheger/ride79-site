@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:Archivo,sans-serif;color:#111111;background:#FFFFFF;border:1.5px solid #111111;padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:22px">
+  <sc-if value="{{ isOrder }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <h3 style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(32px,4vw,44px);line-height:.9;text-transform:uppercase">{{ heading }}</h3>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#55524B">SECURE CHECKOUT / STRIPE</span>
+      </div>
+      <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+        <legend style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;margin-bottom:10px">01 / MODEL</legend>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px">
+          <sc-for list="{{ models }}" as="m" hint-placeholder-count="2">
+            <button type="button" aria-pressed="{{ m.on }}" onClick="{{ m.pick }}" style="min-height:60px;padding:10px 14px;border:1.5px solid #111111;background:{{ m.bg }};color:{{ m.fg }};text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:2px">
+              <span style="font-family:Archivo,sans-serif;font-stretch:62%;font-weight:900;font-size:24px;line-height:1;text-transform:uppercase">{{ m.name }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px">{{ m.price }} delivered</span>
+            </button>
+          </sc-for>
+        </div>
+      </fieldset>
+      <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+        <legend style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;margin-bottom:10px">02 / COLOURWAY <span style="color:#55524B">— {{ colourHint }}</span></legend>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ colours }}" as="c" hint-placeholder-count="6">
+            <button type="button" aria-pressed="{{ c.on }}" onClick="{{ c.pick }}" style="min-height:44px;padding:0 12px 0 8px;border:1.5px solid {{ c.border }};outline:{{ c.ring }};outline-offset:1px;background:#FFFFFF;color:#111111;display:flex;align-items:center;gap:8px;font-family:Archivo,sans-serif;font-weight:600;font-size:14px;cursor:pointer">
+              <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;border:1px solid rgba(17,17,17,.25);background:{{ c.swatch }}"></span>{{ c.name }}
+            </button>
+          </sc-for>
+        </div>
+      </fieldset>
+      <div style="display:flex;flex-direction:column;border-top:2px solid #111111">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;padding:12px 0 4px">03 / YOUR ORDER</span>
+        <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(17,17,17,.14);font-size:16px"><span style="font-weight:600">{{ lineName }}</span><span>{{ price }}</span></div>
+        <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(17,17,17,.14);font-size:16px"><span>Tracked UK mainland delivery</span><span>Included</span></div>
+        <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(17,17,17,.14);font-size:16px"><span>Estimated delivery</span><span>4–10 business days</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em">TOTAL</span><span style="font-stretch:62%;font-weight:900;font-size:44px;line-height:.9">{{ price }}</span></div>
+      </div>
+      <button type="button" onClick="{{ checkout }}" style="height:60px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 22px" style-hover="background:#111111;color:#F4F1E9">Pay {{ price }} securely <span aria-hidden="true">→</span></button>
+      <sc-if value="{{ checkoutErr }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;color:#C4321C;font-size:15px;font-weight:600">Online checkout is being connected. Message us to order your {{ lineName }} now. <a href="{{ waLink }}" target="_blank" rel="noopener">Open WhatsApp</a></p></sc-if>
+      <p style="margin:0;font-size:14px;line-height:1.5;color:#55524B">Credit or debit card, processed securely by Stripe. You'll add your delivery address at checkout and get your order confirmation by email straight away. Prefer bank transfer? <a href="/contact">Contact us</a>.</p>
+      <p style="margin:0;font-size:14px;line-height:1.5;color:#55524B">UK mainland delivery only. Highlands, islands, NI or elsewhere? <a href="/contact?topic=delivery">Ask us first</a>. By ordering you agree to our <a href="/terms">terms of sale</a>, including your <a href="/terms#cancel">14-day right to cancel</a>. See our <a href="/privacy">privacy policy</a>.</p>
+    </div>
+  </sc-if>
+  <sc-if value="{{ notSent }}" hint-placeholder-val="{{ false }}">
+    <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="display:flex;flex-direction:column;gap:22px">
+      <h3 style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(32px,4vw,44px);line-height:.9;text-transform:uppercase">{{ heading }}</h3>
+      <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+        <legend style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;margin-bottom:10px">WHAT CAN WE HELP WITH?</legend>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
+            <button type="button" aria-pressed="{{ t.on }}" onClick="{{ t.pick }}" style="min-height:44px;padding:0 14px;border:1.5px solid #111111;background:{{ t.bg }};color:{{ t.fg }};font-family:Archivo,sans-serif;font-weight:600;font-size:14px;cursor:pointer">{{ t.label }}</button>
+          </sc-for>
+        </div>
+      </fieldset>
+      <sc-if value="{{ showModel }}" hint-placeholder-val="{{ false }}">
+        <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+          <legend style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;margin-bottom:10px">MODEL</legend>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px">
+            <sc-for list="{{ models }}" as="m" hint-placeholder-count="2">
+              <button type="button" aria-pressed="{{ m.on }}" onClick="{{ m.pick }}" style="min-height:52px;padding:8px 14px;border:1.5px solid #111111;background:{{ m.bg }};color:{{ m.fg }};text-align:left;cursor:pointer;font-family:Archivo,sans-serif;font-stretch:62%;font-weight:900;font-size:22px;text-transform:uppercase">{{ m.name }}</button>
+            </sc-for>
+          </div>
+        </fieldset>
+        <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+          <legend style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;margin-bottom:10px">COLOURWAY</legend>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ colours }}" as="c" hint-placeholder-count="6">
+              <button type="button" aria-pressed="{{ c.on }}" onClick="{{ c.pick }}" style="min-height:44px;padding:0 12px 0 8px;border:1.5px solid {{ c.border }};outline:{{ c.ring }};outline-offset:1px;background:#FFFFFF;color:#111111;display:flex;align-items:center;gap:8px;font-family:Archivo,sans-serif;font-weight:600;font-size:14px;cursor:pointer">
+                <span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;border:1px solid rgba(17,17,17,.25);background:{{ c.swatch }}"></span>{{ c.name }}
+              </button>
+            </sc-for>
+          </div>
+        </fieldset>
+      </sc-if>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+        <label style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em">YOUR NAME</span>
+          <input name="name" autoComplete="name" value="{{ f.name }}" onChange="{{ onName }}" aria-invalid="{{ inv.name }}" style="height:52px;border:1.5px solid #111111;padding:0 14px;font-size:16px;font-family:Archivo,sans-serif;background:#F4F1E9;color:#111111;border-radius:0">
+          <sc-if value="{{ err.name }}" hint-placeholder-val="{{ false }}"><span role="alert" style="color:#C4321C;font-size:14px;font-weight:600">{{ err.name }}</span></sc-if>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em">EMAIL OR MOBILE</span>
+          <input name="contact" autoComplete="email" inputMode="email" value="{{ f.contact }}" onChange="{{ onContact }}" aria-invalid="{{ inv.contact }}" style="height:52px;border:1.5px solid #111111;padding:0 14px;font-size:16px;font-family:Archivo,sans-serif;background:#F4F1E9;color:#111111;border-radius:0">
+          <sc-if value="{{ err.contact }}" hint-placeholder-val="{{ false }}"><span role="alert" style="color:#C4321C;font-size:14px;font-weight:600">{{ err.contact }}</span></sc-if>
+        </label>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em">YOUR MESSAGE <span style="color:#55524B">— ORDER NUMBER IF YOU HAVE ONE</span></span>
+        <textarea name="message" rows="4" value="{{ f.message }}" onChange="{{ onMessage }}" style="border:1.5px solid #111111;padding:12px 14px;font-size:16px;font-family:Archivo,sans-serif;background:#F4F1E9;color:#111111;resize:vertical;border-radius:0"></textarea>
+      </label>
+      <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+        <legend style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;margin-bottom:10px">BEST WAY TO REACH YOU</legend>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ methods }}" as="m" hint-placeholder-count="3">
+            <button type="button" aria-pressed="{{ m.on }}" onClick="{{ m.pick }}" style="min-height:44px;padding:0 16px;border:1.5px solid #111111;background:{{ m.bg }};color:{{ m.fg }};font-family:Archivo,sans-serif;font-weight:600;font-size:14px;cursor:pointer">{{ m.label }}</button>
+          </sc-for>
+        </div>
+      </fieldset>
+      <button type="submit" style="height:60px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 22px" style-hover="background:#111111;color:#F4F1E9">{{ submitLabel }} <span aria-hidden="true">→</span></button>
+      <sc-if value="{{ err.submit }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;color:#C4321C;font-size:15px;font-weight:600">{{ err.submit }} <a href="{{ waLink }}" target="_blank" rel="noopener">Open WhatsApp</a></p></sc-if>
+      <p style="margin:0;font-size:14px;line-height:1.5;color:#55524B">A real person at RIDE79 replies, usually by your chosen method. We will never ask you to pay into a personal bank account.</p>
+    </form>
+  </sc-if>
+  <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#4355FF">● MESSAGE RECEIVED</span>
+      <h3 style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(36px,5vw,56px);line-height:.9;text-transform:uppercase">Thanks, {{ firstName }}.<br>We're on it.</h3>
+      <p style="margin:0;font-size:17px;line-height:1.55;max-width:52ch">{{ sentCopy }}</p>
+      <a href="{{ waLink }}" target="_blank" rel="noopener" style="align-self:flex-start;min-height:48px;padding:0 18px;background:#111111;color:#F4F1E9;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#FF583D;color:#111111">Want it faster? WhatsApp us →</a>
+      <button type="button" onClick="{{ reset }}" style="align-self:flex-start;min-height:44px;padding:0 16px;border:1.5px solid #111111;background:transparent;font-family:Archivo,sans-serif;font-weight:600;font-size:14px;cursor:pointer">Send another message</button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:640,&quot;height&quot;:900},&quot;model&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;gt&quot;,&quot;pro&quot;],&quot;default&quot;:&quot;gt&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;colour&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;order&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;order&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;topic&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Product question&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onTopic&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(t: string) =&gt; void&quot;},&quot;onColour&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(c: string) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  static ENDPOINT = 'https://formspree.io/f/xnpjggbo';
+  static M = {
+    pro: { name: 'Falcon Pro', price: '£2,995', colours: [['Black / Purple','#151515','#7B4FE0'],['Black / Red','#151515','#E8402E'],['Black / Yellow','#151515','#F2B21B'],['Silver / Purple','#C9CBCC','#7B4FE0'],['Silver / Red','#C9CBCC','#E8402E'],['Silver / Yellow','#C9CBCC','#F2B21B']] },
+    gt: { name: 'Falcon GT', price: '£3,495', colours: [['Black / Yellow','#151515','#F2B21B'],['White / Yellow','#F4F4F2','#F2B21B']] }
+  };
+  static TOPICS = ['Product question','Pay by bank transfer','Order assistance','Delivery outside UK mainland','Warranty assistance','Replacement parts','General'];
+  static BIKE_TOPICS = ['Product question','Pay by bank transfer','Delivery outside UK mainland'];
+  first(k) { return Component.M[k].colours[0][0]; }
+  state = { model: this.props.model || 'gt', colour: this.props.colour || this.first(this.props.model || 'gt'), topic: this.props.topic || 'Product question', method: 'WhatsApp', f: { name: '', contact: '', message: '' }, err: {}, sent: false, checkoutErr: false };
+  componentDidUpdate(p) {
+    const ch = {};
+    if (p.model !== this.props.model && this.props.model) ch.model = this.props.model;
+    if (p.colour !== this.props.colour && this.props.colour) ch.colour = this.props.colour;
+    if (p.topic !== this.props.topic && this.props.topic) ch.topic = this.props.topic;
+    if (Object.keys(ch).length) this.setState({ ...ch, sent: false, checkoutErr: false });
+  }
+  set(k) { return e => { const v = e.target.value; this.setState(s => ({ f: { ...s.f, [k]: v }, err: { ...s.err, [k]: undefined } })); }; }
+  validate() {
+    const { f } = this.state; const err = {};
+    if (!f.name.trim()) err.name = 'Add your name so we know who to reply to.';
+    const c = f.contact.trim().replace(/\s/g, '');
+    if (!c) err.contact = 'Add an email or UK mobile number.';
+    else if (!/^[^@]+@[^@]+\.[^@]+$/.test(c) && !/^(\+44|0)7\d{9}$/.test(c)) err.contact = 'Enter a valid email or UK mobile (07… or +447…).';
+    return err;
+  }
+  renderVals() {
+    const C = Component.M; const { model, method, topic, f, err, sent } = this.state;
+    const contactMode = this.props.mode === 'contact';
+    const m = C[model];
+    const colour = m.colours.some(c => c[0] === this.state.colour) ? this.state.colour : m.colours[0][0];
+    const showModel = contactMode && Component.BIKE_TOPICS.includes(topic);
+    const on = (x) => ({ bg: x ? '#111111' : '#FFFFFF', fg: x ? '#F4F1E9' : '#111111', on: x });
+    const lineName = m.name + ' · ' + colour;
+    return {
+      heading: this.props.heading || (contactMode ? 'Talk to RIDE79' : 'Buy your ' + m.name),
+      isOrder: !contactMode, notSent: contactMode && !sent, sent: contactMode && sent, showModel, f, err,
+      inv: { name: !!err.name, contact: !!err.contact },
+      price: m.price, lineName, checkoutErr: this.state.checkoutErr,
+      topics: Component.TOPICS.map(t => ({ label: t, ...on(t === topic), pick: () => { this.setState({ topic: t, err: {} }); this.props.onTopic && this.props.onTopic(t); } })),
+      models: ['gt','pro'].map(k => ({ name: C[k].name, price: C[k].price, ...on(k === model), pick: () => this.setState({ model: k, checkoutErr: false, colour: C[k].colours.some(c => c[0] === colour) ? colour : C[k].colours[0][0] }) })),
+      colours: m.colours.map(([n, a, b]) => ({ name: n, swatch: `linear-gradient(135deg, ${a} 0 52%, ${b} 52% 100%)`, on: n === colour, border: n === colour ? '#111111' : 'rgba(17,17,17,.3)', ring: n === colour ? '2px solid #4355FF' : 'none', pick: () => { this.setState({ colour: n, checkoutErr: false }); this.props.onColour && this.props.onColour(n); } })),
+      colourHint: m.colours.length + ' on the ' + m.name,
+      checkout: () => {
+        const C2 = window.RIDE79;
+        if (!C2 || !C2.url(model, colour)) { this.setState({ checkoutErr: true }); return; }
+        C2.go(model, colour);
+      },
+      methods: ['WhatsApp','Phone call','Email'].map(x => ({ label: x, ...on(x === method), pick: () => this.setState({ method: x }) })),
+      onName: this.set('name'), onContact: this.set('contact'), onMessage: this.set('message'),
+      submitLabel: this.state.sending ? 'Sending…' : 'Send message',
+      firstName: (f.name.trim().split(' ')[0] || 'rider'),
+      sentCopy: topic === 'Pay by bank transfer' ? `We'll send a written order for the ${lineName} with RIDE79 business account details, by ${method.toLowerCase()}.` : `We'll reply by ${method.toLowerCase()} about: ${topic.toLowerCase()}.`,
+      submit: async (e) => { e.preventDefault(); const er = this.validate(); this.setState({ err: er }); if (Object.keys(er).length) return;
+        const payload = { _subject: 'RIDE79 contact: ' + topic + (showModel ? ' — ' + lineName : ''), topic, model: showModel ? m.name : '', colour: showModel ? colour : '', method, ...f };
+        const ep = Component.ENDPOINT;
+        if (ep && !ep.includes('YOUR_FORM_ID')) {
+          this.setState({ sending: true });
+          try { const r = await fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) }); if (!r.ok) throw new Error(r.status); }
+          catch (x) { this.setState({ sending: false, err: { submit: 'That didn\'t send. Please try again, or message us on WhatsApp.' } }); return; }
+        }
+        this.setState({ sent: true, sending: false }); this.props.onSent && this.props.onSent(payload); },
+      waLink: 'https://wa.me/447875991471?text=' + encodeURIComponent(contactMode ? 'Hi RIDE79, ' + topic.toLowerCase() + ' — ' + (f.message || '') : 'Hi RIDE79, I\'d like to order the ' + lineName + '.'),
+      reset: () => this.setState({ sent: false, f: { name: '', contact: '', message: '' } })
+    };
+  }
+}
+</script>
+</body>
+</html>

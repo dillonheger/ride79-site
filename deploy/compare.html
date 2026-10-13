@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="icon" href="/brand/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/brand/favicon/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/brand/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#111111">
+  <title>Falcon GT vs Pro, vs Ultra Bee &amp; Light Bee X | RIDE79 UK</title>
+  <meta name="description" content="Falcon GT or Falcon Pro? Compare power, torque, battery, weight, suspension, wheels, colours and price side by side. 72V electric dirt bikes from RIDE79, UK authorised 79BIKE dealer.">
+  <link rel="canonical" href="https://ride79.co.uk/compare">
+  <meta property="og:title" content="Falcon GT vs Falcon Pro — RIDE79">
+  <meta property="og:description" content="Side-by-side comparison of the 79BIKE Falcon GT and Falcon Pro.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ride79.co.uk/compare">
+  <meta property="og:image" content="https://ride79.co.uk/assets/gt-black-yellow.webp">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+  <style>*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;background:#F4F1E9;color:#111111;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#111111}a:hover{color:#FF583D}img{max-width:100%}:focus-visible{outline:3px solid #4355FF;outline-offset:2px}@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}</style>
+</helmet>
+<dc-import name="Nav" active="compare" hint-size="100%,100px"></dc-import>
+<main id="main" style="font-family:Archivo,sans-serif;color:#111111;background:#F4F1E9">
+  <section aria-labelledby="cmp-title" style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(16px,3vw,40px) 24px">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#55524B">DECISION TOOL / 79-PRO VS 79-GT</span>
+    <h1 id="cmp-title" style="margin:12px 0 16px;font-stretch:62%;font-weight:900;font-size:clamp(68px,12vw,180px);line-height:.8;text-transform:uppercase">GT <span style="color:#FF583D">or</span> Pro.</h1>
+    <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;max-width:52ch">Same 72V platform, same frame dimensions, same seat height. The £500 difference buys power, damping and brakes. Here's exactly what changes.</p>
+  </section>
+
+  <div style="position:sticky;top:{{ stickyTop }};z-index:40;background:#F4F1E9;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr">
+      <a href="/falcon-gt" style="padding:10px clamp(12px,2vw,24px);display:flex;align-items:center;gap:12px;text-decoration:none;color:#FFFFFF;background:#4355FF" style-hover="background:#3646E6;color:#FFFFFF">
+        <img src="/assets/gt-black-yellow.webp" alt="" width="96" height="60" style="width:clamp(56px,8vw,110px);height:auto;aspect-ratio:16/10;object-fit:contain">
+        <span style="display:flex;flex-direction:column;line-height:1"><span style="font-stretch:62%;font-weight:900;font-size:clamp(26px,3.4vw,40px);text-transform:uppercase">GT</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;margin-top:4px">£3,495</span></span>
+      </a>
+      <a href="/falcon-pro" style="padding:10px clamp(12px,2vw,24px);display:flex;align-items:center;gap:12px;text-decoration:none;color:#111111;border-left:1.5px solid #111111" style-hover="background:#FFFFFF">
+        <img src="/assets/pro-silver-yellow.png" alt="" width="96" height="60" style="width:clamp(56px,8vw,110px);height:auto;aspect-ratio:16/10;object-fit:contain">
+        <span style="display:flex;flex-direction:column;line-height:1"><span style="font-stretch:62%;font-weight:900;font-size:clamp(26px,3.4vw,40px);text-transform:uppercase">Pro</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;margin-top:4px">£2,995</span></span>
+      </a>
+    </div>
+  </div>
+
+  <section aria-label="Specification comparison" style="max-width:1200px;margin:0 auto;padding:24px clamp(16px,3vw,40px) clamp(56px,7vw,96px)">
+    <div role="tablist" aria-label="Compare by" style="display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:18px">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="7">
+        <button type="button" role="tab" aria-selected="{{ c.on }}" onClick="{{ c.pick }}" style="flex:0 0 auto;min-height:44px;padding:0 16px;border:1.5px solid #111111;background:{{ c.bg }};color:{{ c.fg }};font-family:Archivo,sans-serif;font-weight:700;font-size:14px;cursor:pointer">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <div role="tabpanel" style="display:flex;flex-direction:column;border-top:2px solid #111111">
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="6">
+        <div style="padding:14px 0 16px;border-bottom:1px solid rgba(17,17,17,.16);display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#55524B;text-transform:uppercase">{{ r.k }}</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:clamp(17px,2vw,22px);font-weight:700;line-height:1.25;color:#2D3BD9">{{ r.p }}</span>
+              <sc-if value="{{ r.hasBar }}" hint-placeholder-val="{{ false }}"><span style="height:8px;background:#E3DED2;display:block"><span style="display:block;height:100%;width:{{ r.pw }};background:#4355FF;transition:width 700ms ease"></span></span></sc-if>
+              <sc-if value="{{ r.pWin }}" hint-placeholder-val="{{ false }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#111111;background:#FF583D;align-self:flex-start;padding:2px 6px">{{ r.pNote }}</span></sc-if>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:clamp(17px,2vw,22px);font-weight:700;line-height:1.25">{{ r.g }}</span>
+              <sc-if value="{{ r.hasBar }}" hint-placeholder-val="{{ false }}"><span style="height:8px;background:#E3DED2;display:block"><span style="display:block;height:100%;width:{{ r.gw }};background:#111111;transition:width 700ms ease"></span></span></sc-if>
+              <sc-if value="{{ r.gWin }}" hint-placeholder-val="{{ false }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#111111;background:#FF583D;align-self:flex-start;padding:2px 6px">{{ r.gNote }}</span></sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:14px 0 0;font-size:14px;color:#55524B">Manufacturer figures from 79BIKE documentation. Top speed and range are quoted and vary with rider weight, terrain and conditions.</p>
+  </section>
+
+  <section aria-labelledby="extra-title" style="background:#111111;color:#F4F1E9">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(16px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,4vw,64px)">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">THE £500 QUESTION</span>
+        <h2 id="extra-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.85;text-transform:uppercase">What the GT<br>adds.</h2>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:2px solid #F4F1E9">
+        <li style="padding:16px 0;border-bottom:1px solid rgba(244,241,233,.16);display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline"><span style="font-stretch:62%;font-weight:900;font-size:40px;color:#8E95FF">+6.8kW</span><span style="font-size:17px;line-height:1.45">Peak power: 16.8 kW vs 10 kW</span></li>
+        <li style="padding:16px 0;border-bottom:1px solid rgba(244,241,233,.16);display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline"><span style="font-stretch:62%;font-weight:900;font-size:40px;color:#8E95FF">+180</span><span style="font-size:17px;line-height:1.45">N·m of torque: 590 vs 410</span></li>
+        <li style="padding:16px 0;border-bottom:1px solid rgba(244,241,233,.16);display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline"><span style="font-stretch:62%;font-weight:900;font-size:40px;color:#8E95FF">+5Ah</span><span style="font-size:17px;line-height:1.45">Battery: 72V 40Ah vs 72V 35Ah, with a 15A charge current (vs 10A)</span></li>
+        <li style="padding:16px 0;border-bottom:1px solid rgba(244,241,233,.16);display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline"><span style="font-stretch:62%;font-weight:900;font-size:40px;color:#8E95FF">ADJ.</span><span style="font-size:17px;line-height:1.45">Fastace front &amp; rear shocks with high/low-speed compression adjustment</span></li>
+        <li style="padding:16px 0;border-bottom:1px solid rgba(244,241,233,.16);display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline"><span style="font-stretch:62%;font-weight:900;font-size:40px;color:#8E95FF">ABS</span><span style="font-size:17px;line-height:1.45">Lewis brakes, 220 × 2.8 mm discs, E-ABS + traction control</span></li>
+        <li style="padding:16px 0;border-bottom:1px solid rgba(244,241,233,.16);display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline"><span style="font-stretch:62%;font-weight:900;font-size:40px;color:#8E95FF">18"</span><span style="font-size:17px;line-height:1.45">Wider 90/90-18 rear tyre for more drive</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <dc-import name="Rivals" focus="both" hint-size="100%,1100px"></dc-import>
+  <dc-import name="DealerAdvantage" hint-size="100%,1200px"></dc-import>
+
+  <section aria-labelledby="who-title" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(16px,3vw,40px)">
+    <h2 id="who-title" style="margin:0 0 28px;font-stretch:62%;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.85;text-transform:uppercase">Who it's for.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:12px">
+      <article style="background:#4355FF;color:#FFFFFF;border:1.5px solid #111111;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-stretch:62%;font-weight:900;font-size:48px;line-height:.85;text-transform:uppercase">Falcon GT</h3>
+        <ul style="margin:0;padding:0 0 0 18px;font-size:17px;line-height:1.6">
+          <li>Experienced riders who want maximum pull</li>
+          <li>Faster, open terrain and bigger hits</li>
+          <li>Wants adjustable suspension out of the box</li>
+          <li>Comparing against pricier flagship e-motos</li>
+        </ul>
+        <a href="/falcon-gt" style="margin-top:auto;height:56px;padding:0 20px;background:#FFFFFF;color:#111111;text-decoration:none;font-weight:800;display:flex;align-items:center;justify-content:space-between" style-hover="background:#FF583D;color:#111111">Choose Falcon GT <span aria-hidden="true">→</span></a>
+      </article>
+      <article style="background:#FFFFFF;border:1.5px solid #111111;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-stretch:62%;font-weight:900;font-size:48px;line-height:.85;text-transform:uppercase">Falcon Pro</h3>
+        <ul style="margin:0;padding:0 0 0 18px;font-size:17px;line-height:1.6">
+          <li>Stepping up to 72V for the first time</li>
+          <li>Tighter, technical trails where weight matters</li>
+          <li>Wants a specific look — six colourways</li>
+          <li>Best value per pound in the range</li>
+        </ul>
+        <a href="/falcon-pro" style="margin-top:auto;height:56px;padding:0 20px;background:#111111;color:#F4F1E9;text-decoration:none;font-weight:800;display:flex;align-items:center;justify-content:space-between" style-hover="background:#FF583D;color:#111111">Choose Falcon Pro <span aria-hidden="true">→</span></a>
+      </article>
+      <article style="background:#F4F1E9;border:1.5px dashed #111111;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-stretch:62%;font-weight:900;font-size:48px;line-height:.85;text-transform:uppercase">Still torn?</h3>
+        <p style="margin:0;font-size:17px;line-height:1.55">Tell us your height, weight, experience and where you ride. We'll give you a straight answer — even if it's the cheaper bike.</p>
+        <a href="/contact" style="margin-top:auto;height:56px;padding:0 20px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:800;display:flex;align-items:center;justify-content:space-between" style-hover="background:#111111;color:#F4F1E9">Ask us which suits you <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+  </section>
+</main>
+<dc-import name="Footer" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static C = {
+    'Price & delivery': [['Price','£2,995','£3,495'],['UK mainland delivery','Included, tracked','Included, tracked'],['Est. delivery','4–10 business days','4–10 business days'],['Warranty','12-month limited','12-month limited']],
+    'Power': [['Peak power','10 kW','16.8 kW',10,16.8,'g'],['Rated power','5 kW','8 kW',5,8,'g'],['Max torque','410 N·m','590 N·m',410,590,'g'],['Top speed (quoted)','56 mph · 90 km/h','59 mph · 95 km/h',56,59,'g'],['Motor','LPMSM','Self-developed high-speed LPMSM'],['Controller','72V sine-wave vector','72V sine-wave FOC']],
+    'Battery': [['Battery','72V 35Ah NMC','72V 40Ah NMC',35,40,'g'],['Charge current','10A','15A',10,15,'g'],['Charging time','3–4 hours','3–4 hours'],['Range (quoted)','120 km at 25 km/h','120 km at 25 km/h'],['Protection','IP67','IP67']],
+    'Weight & size': [['Weight incl. battery','59.2 kg','65 kg',59.2,65,'p'],['Max load','120 kg','120 kg'],['L × W × H','1869 × 767 × 1098 mm','1869 × 767 × 1098 mm'],['Seat height','830 mm','830 mm'],['Wheelbase','1260 mm','1260 mm'],['Ground clearance','275 mm','275 mm']],
+    'Suspension & brakes': [['Suspension','Front & rear','Fastace front & rear, adj. high/low-speed compression',0,0,'g'],['Travel (quoted)','200 mm F / 85 mm R','200 mm F / 85 mm R'],['Brake discs','203 × 2.3 mm','220 × 2.8 mm (Lewis)',203,220,'g'],['Rider aids','—','E-ABS + traction control',0,0,'g'],['Frame','Triple-beam forged aluminium','Aluminium alloy']],
+    'Wheels': [['Front tyre','70/100-19','70/100-19'],['Rear tyre','70/100-19','90/90-18',0,0,'g'],['Drive','Belt + 420 chain','Belt + 420 chain']],
+    'Colours': [['Colourways','6','2',0,0,'p'],['Options','Black or Silver frame with Purple, Red or Yellow','Black / Yellow, White / Yellow']]
+  };
+  state = { cat: 'Power', wide: true };
+  componentDidMount() { this.u = () => { const h = document.querySelector('header'); this.setState({ wide: window.innerWidth >= 1000, top: h ? h.offsetHeight : 100 }); }; setTimeout(this.u, 300); this.u(); window.addEventListener('resize', this.u); }
+  componentWillUnmount() { window.removeEventListener('resize', this.u); }
+  renderVals() {
+    const { cat } = this.state;
+    const notes = { 'Weight incl. battery': '5.8 KG LIGHTER', 'Colourways': 'MORE CHOICE', 'Rider aids': 'GT ONLY', 'Suspension': 'ADJUSTABLE', 'Rear tyre': 'WIDER REAR' };
+    return {
+      stickyTop: (this.state.top || 100) + 'px',
+      cats: Object.keys(Component.C).map(k => ({ label: k, on: k === cat, bg: k === cat ? '#111111' : '#FFFFFF', fg: k === cat ? '#F4F1E9' : '#111111', pick: () => this.setState({ cat: k }) })),
+      rows: Component.C[cat].map(([k, p, g, pn, gn, win]) => {
+        const hasBar = !!(pn && gn); const mx = Math.max(pn || 0, gn || 0);
+        return { k, p: g, g: p, hasBar, pw: hasBar ? (gn / mx * 100) + '%' : '0%', gw: hasBar ? (pn / mx * 100) + '%' : '0%',
+          pWin: win === 'g', gWin: win === 'p', pNote: notes[k] || (hasBar ? '+' + Math.round((gn / pn - 1) * 100) + '%' : 'ADVANTAGE'), gNote: notes[k] || 'ADVANTAGE' };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

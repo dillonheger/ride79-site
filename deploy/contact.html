@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="icon" href="/brand/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/brand/favicon/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/brand/favicon/apple-touch-icon.png">
+  <meta name="theme-color" content="#111111">
+  <title>Contact RIDE79 — Product Questions, Orders, Warranty &amp; Parts</title>
+  <meta name="description" content="Contact RIDE79, UK authorised 79BIKE dealer, about the Falcon GT and Falcon Pro: product questions, bank transfer orders, order help, warranty assistance and replacement parts.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="RIDE79">
+  <meta property="og:image" content="https://ride79.co.uk/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ride79.co.uk/contact">
+  <meta property="og:title" content="Contact RIDE79">
+  <meta property="og:description" content="Questions, orders, warranty and parts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ride79.co.uk/contact">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+  <style>*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;background:#F4F1E9;color:#111111;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:#111111}a:hover{color:#FF583D}:focus-visible{outline:3px solid #4355FF;outline-offset:2px}</style>
+</helmet>
+<dc-import name="Nav" active="contact" hint-size="100%,100px"></dc-import>
+<main id="main" style="font-family:Archivo,sans-serif;color:#111111;background:#F4F1E9">
+  <section aria-labelledby="c-title" style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(16px,3vw,40px) 32px">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#55524B">CONTACT / RIDE79 / LONDON, UK</span>
+    <h1 id="c-title" style="margin:12px 0 16px;font-stretch:62%;font-weight:900;font-size:clamp(64px,11vw,168px);line-height:.8;text-transform:uppercase">Talk to a<br><span style="color:#FF583D">real person.</span></h1>
+    <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;max-width:50ch">Pick what you need and we'll route it. WhatsApp gets the fastest answer.</p>
+  </section>
+
+  <section aria-label="Contact routes" style="max-width:1200px;margin:0 auto;padding:0 clamp(16px,3vw,40px) 32px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px">
+      <sc-for list="{{ routes }}" as="r" hint-placeholder-count="6">
+        <button type="button" aria-pressed="{{ r.on }}" onClick="{{ r.pick }}" style="min-height:96px;padding:16px;border:1.5px solid #111111;background:{{ r.bg }};color:{{ r.fg }};text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;gap:10px;font-family:Archivo,sans-serif">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em">{{ r.n }}</span>
+          <strong style="font-size:18px;line-height:1.2">{{ r.label }}</strong>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-label="Send a message" style="max-width:1200px;margin:0 auto;padding:0 clamp(16px,3vw,40px) clamp(56px,7vw,104px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(24px,4vw,48px);align-items:start">
+    <dc-import name="OrderEnquiry" mode="contact" topic="{{ topic }}" on-topic="{{ setTopic }}" model="gt" hint-size="100%,820px"></dc-import>
+    <aside style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:#111111;color:#F4F1E9;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">FASTEST: MESSAGE US</span>
+        <a href="https://wa.me/447875991471" target="_blank" rel="noopener" style="height:56px;padding:0 18px;background:#FF583D;color:#111111;text-decoration:none;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:space-between" style-hover="background:#F4F1E9;color:#111111">WhatsApp us <span aria-hidden="true">→</span></a>
+        <a href="tel:+447875991471" style="height:56px;padding:0 18px;border:1.5px solid #F4F1E9;color:#F4F1E9;text-decoration:none;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between" style-hover="background:#F4F1E9;color:#111111">Call +44 7875 991471</a>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:#D8D4C9">Prefer writing? Use the form — it comes straight to us. We're a UK online dealer, delivering across the UK mainland.</p>
+      </div>
+      <div style="border:1.5px solid #111111;padding:20px;display:flex;flex-direction:column;gap:8px;background:#FFFFFF">
+        <strong style="font-size:17px">Warranty or parts?</strong>
+        <span style="font-size:15px;line-height:1.5;color:#3A3832">Include your model, colour, order reference and photos or a short video of the issue. It speeds everything up.</span>
+      </div>
+    </aside>
+  </section>
+</main>
+<dc-import name="Footer" hint-size="100%,700px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { topic: new URLSearchParams(location.search).get('topic') === 'delivery' ? 'Delivery outside UK mainland' : 'Product question' };
+  renderVals() {
+    const T = ['Product question', 'Pay by bank transfer', 'Order assistance', 'Delivery outside UK mainland', 'Warranty assistance', 'Replacement parts', 'General'];
+    return {
+      topic: this.state.topic, setTopic: (t) => this.setState({ topic: t }),
+      routes: T.map((label, i) => { const on = label === this.state.topic; return { label, n: 'R.0' + (i + 1), on, bg: on ? '#111111' : '#FFFFFF', fg: on ? '#F4F1E9' : '#111111', pick: () => this.setState({ topic: label }) }; })
+    };
+  }
+}
+</script>
+</body>
+</html>
