@@ -42,7 +42,9 @@
         <div style="display:flex;flex-direction:column;gap:10px">
           <button type="button" onClick="{{ buyNow }}" style="height:60px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 22px" style-hover="background:#111111;color:#F4F1E9">Buy now — {{ d.price }} <span aria-hidden="true">→</span></button>
           <span style="font-size:14px;color:#55524B">{{ cur.name }} · secure card checkout by Stripe · delivery included</span>
-          <a href="https://wa.me/447875991471" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#111111;padding:6px 0">Questions? WhatsApp us on +44 7875 991471 →</a>
+          <a href="{{ waQ }}" target="_blank" rel="noopener noreferrer" aria-label="{{ waLabel }}" style="font-size:15px;font-weight:600;color:#111111;padding:6px 0">Questions? Chat to us on WhatsApp →</a>
+          <p style="margin:0;font-size:13px;line-height:1.5;color:#55524B">By ordering, you agree to our <a href="/terms">Terms of Sale</a>. You have a <a href="/terms#cancel">14-day cancellation right</a>. For a change-of-mind return, you are responsible for suitable return transport and may be liable for diminished value caused by handling beyond what is reasonably necessary. Estimated UK-mainland change-of-mind return transport: approximately £100–£200.</p>
+          <p style="margin:0;font-size:13px;line-height:1.5;color:#55524B">Highlands, islands, Northern Ireland or another non-standard area? <a href="/contact?topic=delivery">Contact RIDE79 before paying</a>. Delivery availability, any delivery charge and the estimated change-of-mind return cost must be confirmed in writing first.</p>
         </div>
         <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;font-size:15px;line-height:1.4;border-top:1px solid rgba(17,17,17,.14)">
           <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(17,17,17,.14)"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF;min-width:64px;padding-top:2px">DELIVERY</span>Processed in 1–3 business days, then tracked delivery in 3–7 business days.</li>
@@ -213,6 +215,38 @@
     </div>
   </section>
 
+  <section id="reviews" aria-labelledby="rev-title" style="scroll-margin-top:100px;background:#F4F1E9;border-top:1.5px solid #111111">
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:clamp(28px,4vw,48px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">FROM {{ d.name }} RIDERS</span>
+          <h2 id="rev-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(52px,7vw,104px);line-height:.82;text-transform:uppercase">Don't take<br>our word <span style="color:#FF583D">for it.</span></h2>
+        </div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;border:1.5px solid #111111;padding:10px 12px">{{ revSummary }}</span>
+      </div>
+      <div style="columns:3 300px;column-gap:16px">
+        <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="6">
+          <article style="break-inside:avoid;margin:0 0 16px;background:#FFFFFF;border:1.5px solid #111111;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 16px">
+              <span aria-hidden="true" style="width:44px;height:44px;flex:none;background:{{ r.tone }};color:#111111;display:flex;align-items:center;justify-content:center;font-stretch:62%;font-weight:900;font-size:24px">{{ r.initial }}</span>
+              <div style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1">
+                <span style="font-weight:800;font-size:16px">{{ r.name }}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#55524B;letter-spacing:.04em">{{ r.place }}</span>
+              </div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;border:1.5px solid #111111;padding:5px 7px;white-space:nowrap">{{ r.model }}</span>
+            </div>
+            <img src="{{ r.img }}" alt="{{ r.alt }}" loading="lazy" style="display:block;width:100%;height:auto;max-height:520px;object-fit:cover;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
+            <div style="padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px">
+              <span aria-label="{{ r.starsLabel }}" style="color:#FF583D;font-size:18px;letter-spacing:2px">{{ r.stars }}</span>
+              <p style="margin:0;font-size:17px;line-height:1.5;text-wrap:pretty">{{ r.text }}</p>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#55524B;letter-spacing:.04em">{{ r.date }}</span>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
   <section aria-labelledby="faq-title" style="padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px);max-width:1100px;margin:0 auto">
     <h2 id="faq-title" style="margin:0 0 28px;font-stretch:62%;font-weight:900;font-size:clamp(48px,6vw,88px);line-height:.85;text-transform:uppercase">{{ d.name }} questions</h2>
     <div style="border-top:2px solid #111111">
@@ -258,26 +292,26 @@
 class Component extends DCLogic {
   static D = {
     gt: {
-      key: 'gt', video: '/assets/video/gt-hero-promo-square.mp4', poster: '/assets/gt-detail-shock.webp', videoLabel: 'Falcon GT promo film: close-ups of the logo, frame and components', name: 'Falcon GT', short: 'Falcon ', suffix: 'GT', code: '79-GT', role: 'Flagship / 72V 40Ah', price: '£3,495', coord: 'PEAK 16.8 KW / 590 N·M',
-      pitch: 'The flagship. 16.8 kW peak, 590 N·m and adjustable Fastace suspension — big-bike intent in a 65 kg chassis.',
+      key: 'gt', video: '/assets/video/gt-hero-promo-square.mp4', poster: '/assets/gt-detail-shock.webp', videoLabel: 'Falcon GT promo film: close-ups of the logo, frame and components', name: 'Falcon GT', short: 'Falcon ', suffix: 'GT', code: '79-GT', role: 'Flagship / 72V 40Ah', price: '£3,495', coord: 'PEAK 16.8 KW / 610 N·M',
+      pitch: 'The flagship. 16.8 kW peak, 610 N·m and adjustable Fastace suspension — big-bike intent in a 65 kg chassis.',
       colours: [['Black / Yellow','/assets/gt-black-yellow.webp','#151515','#F2B21B'],['White / Yellow','/assets/gt-white-yellow.webp','#F4F4F2','#F2B21B']],
-      stats: [['16.8','kW','Peak power'],['590','N·m','Max torque'],['59','mph','Quoted top speed'],['40','Ah','72V battery'],['65','kg','Weight incl. battery']],
+      stats: [['16.8','kW','Peak power'],['610','N·m','Max torque'],['59','mph','Quoted top speed'],['40','Ah','72V battery'],['65','kg','Weight incl. battery']],
       hwTitle: 'Hardware with intent.', hwIntro: 'The GT spends its extra budget where you feel it: power, damping and stopping.',
       features: [
         ['A','Fastace shocks, front and rear','Adjustable high- and low-speed compression damping, built for longer life and higher load capacity.','/assets/gt-detail-shock.webp','Close-up of the Falcon GT yellow Fastace rear shock'],
-        ['B','Self-developed high-speed LPMSM','16.8 kW peak and 590 N·m from 79BIKE\'s own permanent-magnet motor. 8 kW rated.','/assets/gt-detail-motor-v2.webp','Close-up of the Falcon GT motor housing and side panel'],
+        ['B','Self-developed high-speed LPMSM','16.8 kW peak and 610 N·m from 79BIKE\'s own permanent-magnet motor. 8 kW rated.','/assets/gt-detail-motor-v2.webp','Close-up of the Falcon GT motor housing and side panel'],
         ['C','Sine-wave FOC controller','72V sine-wave vector control for smooth, precise delivery from walking pace to full pull.','/assets/gt-detail-dash.webp','Falcon GT TFT dashboard and handlebar controls'],
         ['D','Lewis racing-grade brakes','Thicker, wider 220 × 2.8 mm discs with E-ABS and traction control.','/assets/gt-detail-brake-v2.webp','Close-up of the Falcon GT Lewis front brake calliper and disc']
       ],
       gallery: [['/assets/gt-hero-wheelie.webp','Rider lifting the front wheel of the Falcon GT beside a lake','Front up'],['/assets/gt-lake-reflection.webp','Rider on the black Falcon GT at the water\'s edge','Lakeside'],['/assets/gt-trail-trees.webp','Rider on the Falcon GT among trees by a lake','In the trees'],['/assets/gt-white-moongate.webp','White Falcon GT framed by a circular stone gateway','White / Yellow'],['/assets/gt-white-architecture.webp','White Falcon GT on grass in front of glass architecture','Parked up'],['/assets/gt-white-street.webp','White Falcon GT side profile on a paved road','Side profile']],
       specs: {
-        Performance: [['Peak power','16.8 kW'],['Rated power','8 kW'],['Max torque','590 N·m'],['Top speed (quoted)','95 km/h (59 mph)'],['Range (quoted)','120 km at 25 km/h (75 miles at 15 mph)'],['Motor','Self-developed high-speed LPMSM'],['Controller','72V sine-wave vector (FOC)']],
+        Performance: [['Peak power','16.8 kW'],['Rated power','8 kW'],['Max torque','610 N·m'],['Top speed','59 mph / 95 km/h quoted'],['Range (quoted)','120 km at 25 km/h (75 miles at 15 mph)'],['Motor','Self-developed high-speed LPMSM'],['Controller','72V sine-wave vector (FOC)']],
         Battery: [['Battery','72V 40Ah lithium-ion NMC (50S)'],['Rated voltage','72V'],['Charge current','15A'],['Charging time','3–4 hours'],['Protection grade','IP67']],
         Chassis: [['Frame','Aluminium alloy'],['Suspension','Fastace front & rear, adjustable high/low-speed compression'],['Suspension travel','Front 200 mm / rear 85 mm (as quoted)'],['Brakes','Lewis, 220 × 2.8 mm discs front & rear'],['Rider aids','E-ABS + traction control'],['Tyres','Front 70/100-19, rear 90/90-18'],['Drive','HTD 8M primary belt, 420 chain (112 links)']],
         Dimensions: [['L × W × H','1869 × 767 × 1098 mm'],['Wheelbase','1260 mm'],['Seat height','830 mm'],['Ground clearance','275 mm'],['Handlebar width','760 mm'],['Weight','65 kg incl. battery'],['Max load','120 kg'],['Rider age (manufacturer)','18–55']],
         Electronics: [['Dashboard','Smart display with NFC'],['Lighting','LED, star-ring accent light'],['Communication','RS-485 + CAN']]
       },
-      vsKicker: 'GT VS PRO', vsTitle: 'What the extra £500 buys.', vsBody: '6.8 kW more peak power, 180 N·m more torque, a bigger battery, adjustable Fastace damping and heavier-duty brakes with E-ABS. The Pro is lighter and comes in six colourways.',
+      vsKicker: 'GT VS PRO', vsTitle: 'What the extra £500 buys.', vsBody: '6.8 kW more peak power, 200 N·m higher quoted torque (610 vs 410 N·m), a bigger battery, adjustable Fastace damping and heavier-duty brakes with E-ABS. The Pro is lighter and comes in six colourways.',
       otherHref: '/falcon-pro', otherName: 'Pro', orderTitle: 'Your GT. Your line.',
       faqs: [
         ['Is the Falcon GT road legal?','No. The Falcon GT is an off-road electric dirt bike and is not road legal in the UK. Ride it on private land with the landowner\'s permission, or at tracks and venues that allow electric bikes.'],
@@ -285,7 +319,7 @@ class Component extends DCLogic {
         ['How long does delivery take?','Orders are processed within 1–3 business days, then delivered by tracked courier in 3–7 business days. Delivery to UK mainland addresses is included. Highlands and islands, Northern Ireland, the Isle of Man, Isles of Scilly and Channel Islands are outside standard delivery. Contact us before ordering and we\'ll confirm whether we can deliver and any extra charge. We send you the tracking details as soon as your bike is on its way.'],
         ['Can I book a test ride?','Not at the moment. Every Falcon ships factory-sealed from the 79BIKE UK warehouse straight to your door, so you are the first person to ride it. We don\'t run a showroom or demo fleet; that\'s how we keep the price well below RRP. Before you order, we\'re happy to talk it through on WhatsApp or a call, send extra photos and videos, and help you choose between the GT and Pro for your size, experience and riding. You\'re also covered by your 14-day right to cancel and the 12-month warranty.'],
         ['What does the warranty cover?','A 12-month limited manufacturer warranty covering the motor, frame, battery, display, throttle, controller, LED lights and electrical wiring. Claims are handled through RIDE79 as your UK dealer contact, subject to 79BIKE\'s warranty terms.'],
-        ['How does the GT compare with a Sur-Ron Ultra Bee?','Both quote a 59 mph top speed. The Ultra Bee HP X has more peak power (24.5 kW vs 16.8 kW) and a bigger battery. The GT is 23.5 kg lighter, quotes more torque (590 vs 520 N·m — each manufacturer measures differently) and costs around £2,100 less, with adjustable Fastace suspension, E-ABS and traction control as standard.'],
+        ['How does the GT compare with a Sur-Ron Ultra Bee?','Both quote a 59 mph top speed. The Ultra Bee HP X has more peak power (24.5 kW vs 16.8 kW) and a bigger battery. The GT is 23.5 kg lighter and £2,504 less (£3,495 delivered vs £5,999 UK RRP), with adjustable Fastace suspension, E-ABS and traction control as standard. The Falcon GT’s manufacturer-quoted torque figure is 610 N·m, 90 N·m higher than the Ultra Bee HP X’s published 520 N·m figure. Manufacturer measurement methods may differ.'],
         ['Why buy from RIDE79 rather than 79BIKE directly?','You pay £304 less with delivery included (79BIKE lists the GT at £3,699 plus £100 delivery, October 2026), we can put together packages and deals the manufacturer doesn\'t offer, and you get a permanent London-based contact who knows who to speak to inside 79BIKE for warranty and parts.'],
         ['Can I get parts after I buy?','Yes. RIDE79 remains your contact for genuine 79BIKE replacement parts and warranty assistance after delivery.']
       ]
@@ -304,7 +338,7 @@ class Component extends DCLogic {
       ],
       gallery: [['/assets/pro-air-jump.webp','Rider jumping the Falcon Pro off a grass ramp','Airtime'],['/assets/pro-wheelie-steps.webp','Rider wheeling the Black / Purple Falcon Pro by glass architecture','Front up'],['/assets/pro-water-splash.webp','Rider splashing the Black / Yellow Falcon Pro through a stream','Water crossing'],['/assets/pro-desert-run.webp','Rider on the Falcon Pro at speed across red dirt','Flat out'],['/assets/pro-dirt-track.webp','Silver / Purple Falcon Pro parked on a dirt track','Silver / Purple'],['/assets/pro-silver-yellow-garage.webp','Silver / Yellow Falcon Pro in an underground car park','Silver / Yellow']],
       specs: {
-        Performance: [['Peak power','10 kW'],['Rated power','5 kW'],['Max torque','410 N·m'],['Top speed (quoted)','90 km/h (56 mph)'],['Range (quoted)','120 km at 25 km/h (75 miles at 15 mph)'],['Motor','LPMSM'],['Controller','72V sine-wave vector']],
+        Performance: [['Peak power','10 kW'],['Rated power','5 kW'],['Max torque','410 N·m'],['Top speed','56 mph / 90 km/h quoted'],['Range (quoted)','120 km at 25 km/h (75 miles at 15 mph)'],['Motor','LPMSM'],['Controller','72V sine-wave vector']],
         Battery: [['Battery','72V 35Ah lithium-ion NMC (M50T cells)'],['Rated voltage','72V'],['Charge current','10A'],['Charging time','3–4 hours'],['Protection grade','IP67']],
         Chassis: [['Frame','Triple-beam forged aluminium alloy'],['Suspension travel','Front 200 mm / rear 85 mm (as quoted)'],['Brakes','203 × 2.3 mm discs front & rear'],['Tyres','70/100-19 front & rear'],['Drive','HTD 8M primary belt, 420 chain (106 links)']],
         Dimensions: [['L × W × H','1869 × 767 × 1098 mm'],['Wheelbase','1260 mm'],['Seat height','830 mm'],['Ground clearance','275 mm'],['Handlebar width','760 mm'],['Weight','59.2 kg incl. battery'],['Max load','120 kg'],['Rider age (manufacturer)','18–55']],
@@ -318,7 +352,7 @@ class Component extends DCLogic {
         ['How long does delivery take?','Orders are processed within 1–3 business days, then delivered by tracked courier in 3–7 business days. Delivery to UK mainland addresses is included. Highlands and islands, Northern Ireland, the Isle of Man, Isles of Scilly and Channel Islands are outside standard delivery. Contact us before ordering and we\'ll confirm whether we can deliver and any extra charge. We send you the tracking details as soon as your bike is on its way.'],
         ['Can I book a test ride?','Not at the moment. Every Falcon ships factory-sealed from the 79BIKE UK warehouse straight to your door, so you are the first person to ride it. We don\'t run a showroom or demo fleet; that\'s how we keep the price well below RRP. Before you order, we\'re happy to talk it through on WhatsApp or a call, send extra photos and videos, and help you choose between the GT and Pro for your size, experience and riding. You\'re also covered by your 14-day right to cancel and the 12-month warranty.'],
         ['What does the warranty cover?','A 12-month limited manufacturer warranty covering the motor, frame, battery, display, throttle, controller, LED lights and electrical wiring, handled through RIDE79 and subject to 79BIKE\'s warranty terms.'],
-        ['How does the Pro compare with a Sur-Ron Light Bee X?','Against the MY26 Light Bee X (RRP £3,295), the Pro is £300 less delivered, runs the same 72V 35Ah battery class at a near-identical weight, quotes more torque (410 vs 295 N·m) and a higher top speed (53 vs 50 mph), matches it on 10 kW peak power, and adds NFC smart start, a 120 kg max load and six factory colourways.'],
+        ['How does the Pro compare with a Sur-Ron Light Bee X?','Against the MY26 Light Bee X (RRP £3,295), the Pro is £300 less delivered, runs the same 72V 35Ah battery class at a near-identical weight, quotes more torque (410 vs 295 N·m) and a higher quoted top speed (56 mph / 90 km/h vs 50 mph), matches it on 10 kW peak power, and adds NFC smart start, a 120 kg max load and six factory colourways.'],
         ['Why buy from RIDE79 rather than 79BIKE directly?','You pay £304 less with delivery included (79BIKE lists the Pro at £3,199 plus £100 delivery, October 2026), we can offer packages and deals the manufacturer doesn\'t, and you get a permanent London-based contact who manages warranty and parts with 79BIKE for you.'],
         ['Is the Pro a good first 72V bike?','It\'s the more accessible of the two Falcons — lighter, with smoother-to-manage power than the GT — but it is still a serious machine. Wear full protective kit and build up gradually.']
       ]
@@ -332,12 +366,43 @@ class Component extends DCLogic {
     this.vt = [0, 300, 1200].map(ms => setTimeout(go, ms));
   }
   componentWillUnmount() { (this.vt || []).forEach(clearTimeout); window.removeEventListener('resize', this.u); window.removeEventListener('scroll', this.u); }
+  static REVIEWS = {
+  gt: [
+    {"name":"Kyle M.","place":"Doncaster","model":"FALCON GT","stars":5,"text":"absolute weapon of a bike. acceleration is ridiculous and feels so much lighter than i expected. proper buzzing with it","date":"18 Oct 2026","img":"/assets/reviews/gt-01.jpg","alt":"White Falcon GT indoors on a parquet floor"},
+    {"name":"Danny O.","place":"Kent","model":"FALCON GT","stars":5,"text":"was gonna get an Ultra Bee but the GT made way more sense for the money. Same top speed on paper, lighter bike and saved a serious chunk of cash. no regrets","date":"9 Oct 2026","img":"/assets/reviews/gt-02.jpg","alt":"Black Falcon GT parked in a car park"},
+    {"name":"Josh W.","place":"Bristol","model":"FALCON GT","stars":5,"text":"Black and white looks unreal in person. Was a bit nervous ordering a bike online but everything went smooth. Dillon answered all my questions, sound bloke.","date":"27 Sep 2026","img":"/assets/reviews/gt-03.jpg","alt":"Black Falcon GT parked beside a snowy park"},
+    {"name":"Alfie R.","place":"Leeds","model":"FALCON GT","stars":5,"text":"Mate's got an Ultra Bee and we've been out together a few times. The GT defo holds its own. Feels proper nimble through the tighter stuff aswell","date":"12 Sep 2026","img":"/assets/reviews/gt-04.jpg","alt":"White Falcon GT next to a black and purple Falcon Pro"},
+    {"name":"Tyler B.","place":"Essex","model":"FALCON GT","stars":5,"text":"Didn't expect it to pull this hard lol. First proper electric dirt bike and I'm honestly blown away. Build quality feels solid and suspension is spot on for what I ride.","date":"28 Aug 2026","img":"/assets/reviews/gt-05.png","alt":"White Falcon GT on a stand in a garage"},
+    {"name":"Ben C.","place":"Sheffield","model":"FALCON GT","stars":5,"text":"Bike arrived well packed, pretty straight forward to get set up. Took it out that weekend and haven't stopped grinning since. loads of power","date":"14 Aug 2026","img":"/assets/reviews/gt-06.jpg","alt":"Falcon GT being unpacked from its delivery crate"},
+    {"name":"Harvey T.","place":"Nottingham","model":"FALCON GT","stars":5,"text":"Looked at loads of bikes before going for the GT. for the spec you're getting compared with the Ultra Bee its hard to justify spending more. Really happy with it","date":"22 Jul 2026","img":"/assets/reviews/gt-07.jpg","alt":"White Falcon GT with a custom front plate on a driveway"},
+    {"name":"Ryan P.","place":"Cardiff","model":"FALCON GT","stars":4,"text":"Proper quick and handles surprisingly well for something with this much power. Took me a couple rides to get used to the throttle but now its brilliant.","date":"6 Jul 2026","img":"/assets/reviews/gt-08.jpg","alt":"Falcon GT at night on a brick path"},
+    {"name":"Jack D.","place":"Manchester","model":"FALCON GT","stars":5,"text":"Wasn't sure about buying from a smaller dealer but Dillon was sound. Kept me updated and helped with a setup question after it arrived. bike itself is class","date":"19 Jun 2026","img":"/assets/reviews/gt-09.jpg","alt":"Black Falcon GT on grass with hills behind"},
+    {"name":"Lewis H.","place":"Birmingham","model":"FALCON GT","stars":5,"text":"the torque on this thing is mental. Been riding petrol bikes for years and the instant power still caught me off guard. Easily one of the most fun bikes I've owned.","date":"3 May 2026","img":"/assets/reviews/gt-10.jpg","alt":"White Falcon GT with a custom front plate beside a house"}
+  ],
+  pro: [
+    {"name":"Reece T.","place":"Swansea","model":"FALCON PRO","stars":5,"text":"Got the Pro for my lad and he's absolutely made up with it. Looks mint in purple and there's more than enough power. really decent bit of kit for the money","date":"15 Oct 2026","img":"/assets/reviews/pro-01.jpg","alt":"Young rider on a black and purple Falcon Pro"},
+    {"name":"Callum B.","place":"Glasgow","model":"FALCON PRO","stars":4,"text":"Coming from a Light Bee X I wasn't expecting that much difference but the Pro feels seriously punchy. Took a bit of getting used to but loving it now.","date":"2 Oct 2026","img":"/assets/reviews/pro-02.jpg","alt":"Black Falcon Pro indoors next to a mini bike"},
+    {"name":"Liam H.","place":"Manchester","model":"FALCON PRO","stars":5,"text":"honestly can't fault it. Quick, quiet and loads of fun on the trails. The silver and red looks even better in person. Well chuffed","date":"17 Sep 2026","img":"/assets/reviews/pro-03.jpg","alt":"Silver and red Falcon Pro in a garage"},
+    {"name":"Ethan S.","place":"Newcastle","model":"FALCON PRO","stars":5,"text":"Was looking at a new Light Bee X but the Pro worked out cheaper and the spec looked much better for the same price. Glad I went for it, pulls like mad and handles nicely","date":"31 Aug 2026","img":"/assets/reviews/pro-04.jpg","alt":"Rider sitting on a silver and purple Falcon Pro"},
+    {"name":"Ollie F.","place":"Portsmouth","model":"FALCON PRO","stars":5,"text":"First electric bike and what a laugh. didnt realise how quick these things were until I actually rode one. My mates all want a go now haha","date":"8 Aug 2026","img":"/assets/reviews/pro-05.jpg","alt":"Black and purple Falcon Pro beside a river"},
+    {"name":"Bradley K.","place":"Derby","model":"FALCON PRO","stars":5,"text":"Had a question about the battery when it arrived and Dillon got back to me straight away. Everything sorted and the bikes been brilliant. can't complain","date":"20 Jul 2026","img":"/assets/reviews/pro-06.jpg","alt":"Black Falcon Pro on a bridge"},
+    {"name":"Mason J.","place":"Norwich","model":"FALCON PRO","stars":5,"text":"Proper impressed with the Pro. feels light, plenty of poke and really easy to throw around on the trails. For the price its a bargain compared to some of the bigger names","date":"11 Jun 2026","img":"/assets/reviews/pro-07.jpg","alt":"Silver and purple Falcon Pro on a beach"},
+    {"name":"Charlie A.","place":"Oxford","model":"FALCON PRO","stars":5,"text":"Been saving for a Surron for ages but ended up going with this. really glad I did. Looks sick, goes like stink and still had money left over for riding gear.","date":"24 Apr 2026","img":"/assets/reviews/pro-08.jpg","alt":"Black and red Falcon Pro in a garage"}
+  ]
+  };
+  reviewVals(key) {
+    const tones = ['#FF583D', '#8E95FF', '#F2B21B', '#D8D4C9'];
+    const list = (Component.REVIEWS[key] || []).map((x, i) => ({ ...x, initial: x.name[0], tone: tones[i % tones.length],
+      stars: '★'.repeat(x.stars) + '☆'.repeat(5 - x.stars), starsLabel: x.stars + ' out of 5 stars' }));
+    const avg = list.length ? (list.reduce((s, x) => s + (Component.REVIEWS[key].find(y => y.name === x.name).stars), 0) / list.length).toFixed(1) : '0';
+    return { reviews: list, revSummary: '★ ' + avg + ' / 5 · ' + list.length + ' REVIEWS' };
+  }
   renderVals() {
     const r = Component.D[this.props.model === 'pro' ? 'pro' : 'gt'];
     const { ci, group } = this.state;
     const cols = r.colours.map(([name, img, a, b], i) => ({ name, img, num: '0' + (i + 1), alt: `79BIKE ${r.name} in ${name}, side view`, swatch: `linear-gradient(135deg, ${a} 0 52%, ${b} 52% 100%)`, on: i === ci, ring: i === ci ? '2px solid #4355FF' : '2px solid transparent', pick: () => this.setState({ ci: i }) }));
     const P = Component.D.pro.stats, G = Component.D.gt.stats;
-    return {
+    return { ...this.reviewVals(r.key),
       d: { ...r, hasWide: !!r.video && !r.tall, hasTall: !!r.video && !!r.tall, noVideo: !r.video, colourCount: '0' + r.colours.length, galleryCount: r.gallery.length,
         stats: r.stats.map(([v, u, l], i) => ({ v, u, l, code: 'S.0' + (i + 1) })),
         features: r.features.map(([k, t, b, img, alt]) => ({ k, t, b, img, alt })),
@@ -347,7 +412,9 @@ class Component extends DCLogic {
       cur: cols[ci] || cols[0], colours: cols,
       groups: Object.keys(r.specs).map(g => ({ label: g, on: g === group, bg: g === group ? '#111111' : '#FFFFFF', fg: g === group ? '#F4F1E9' : '#111111', pick: () => this.setState({ group: g }) })),
       specRows: r.specs[group].map(([k, v]) => ({ k, v })),
-      vs: [['Price','£2,995','£3,495'],['Peak power','10 kW','16.8 kW'],['Torque','410 N·m','590 N·m'],['Top speed (quoted)','56 mph','59 mph'],['Battery','72V 35Ah','72V 40Ah'],['Weight','59.2 kg','65 kg'],['Wheels','19" / 19"','19" / 18"'],['Brakes','203 × 2.3 mm','220 × 2.8 mm, E-ABS'],['Colours','6','2']].map(([k, a, b]) => ({ k, a: b, b: a })),
+      vs: [['Price','£2,995','£3,495'],['Peak power','10 kW','16.8 kW'],['Quoted torque','410 N·m','610 N·m'],['Top speed','56 mph / 90 km/h quoted','59 mph / 95 km/h quoted'],['Battery','72V 35Ah','72V 40Ah'],['Weight','59.2 kg','65 kg'],['Wheels','19" / 19"','19" / 18"'],['Brakes','203 × 2.3 mm','220 × 2.8 mm, E-ABS'],['Colours','6','2']].map(([k, a, b]) => ({ k, a: b, b: a })),
+      waQ: 'https://wa.me/447875991471?text=' + encodeURIComponent('Hi RIDE79, I have a question about the ' + r.name + ' in ' + (cols[ci] || cols[0]).name + '.'),
+      waLabel: 'Questions about the ' + r.name + ' in ' + (cols[ci] || cols[0]).name + '? Chat to RIDE79 on WhatsApp (opens WhatsApp in a new tab)',
       showBar: this.state.scrolled,
       buyNow: () => { const c = cols[ci] || cols[0]; window.RIDE79 && window.RIDE79.go(r.key, c.name); },
       setColour: (n) => { const i = r.colours.findIndex(c => c[0] === n); if (i >= 0 && i !== this.state.ci) this.setState({ ci: i }); }

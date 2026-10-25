@@ -24,7 +24,7 @@ window.RIDE79 = window.RIDE79 || {
       else window.location.href = dest;
       return true;
     }
-    window.open('https://wa.me/447875991471?text=' + encodeURIComponent("Hi RIDE79, I'd like to order the " + this.NAMES[model] + ' in ' + colour + '.'), '_blank', 'noopener');
+    window.open('https://wa.me/447875991471?text=' + encodeURIComponent("Hi RIDE79, I'd like to order the " + this.NAMES[model] + ' in ' + colour + '.'), '_blank', 'noopener,noreferrer');
     return false;
   }
 };

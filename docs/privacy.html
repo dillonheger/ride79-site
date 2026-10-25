@@ -14,11 +14,11 @@
   <meta name="theme-color" content="#111111">
   <title>Privacy Policy | RIDE79</title>
   <meta name="description" content="How RIDE79 collects, uses and protects your personal data when you order a 79BIKE Falcon, contact us or make a warranty claim.">
+  <link rel="canonical" href="https://ride79.co.uk/privacy">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RIDE79">
   <meta property="og:image" content="https://ride79.co.uk/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://ride79.co.uk/privacy">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -28,7 +28,7 @@
 <dc-import name="Nav" hint-size="100%,100px"></dc-import>
 <main id="main" style="font-family:Archivo,sans-serif;color:#111111;background:#F4F1E9">
   <section aria-labelledby="p-title" style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(16px,3vw,40px) clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:18px">
-    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#55524B">PRIVACY POLICY / LAST UPDATED 13 OCTOBER 2026</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#55524B">PRIVACY POLICY / LAST UPDATED 24 OCTOBER 2026</span>
     <h1 id="p-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(60px,10vw,152px);line-height:.8;text-transform:uppercase">Your data.<br><span style="color:#FF583D">Only what we need.</span></h1>
     <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;max-width:58ch;text-wrap:pretty">We collect the minimum needed to deliver your bike and support it afterwards. We don't sell your data, and we don't use advertising or tracking cookies.</p>
   </section>
@@ -43,12 +43,12 @@
 
   <div style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,88px) clamp(16px,3vw,40px);display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-start">
     <nav aria-label="Sections" style="flex:1 1 240px;max-width:320px;display:flex;flex-direction:column;border-top:2px solid #111111">
-      <sc-for list="{{ clauses }}" as="c" hint-placeholder-count="9">
+      <sc-for list="{{ clauses }}" as="c" hint-placeholder-count="10">
         <a href="{{ c.href }}" style="display:grid;grid-template-columns:36px 1fr;gap:8px;min-height:44px;align-items:center;border-bottom:1px solid rgba(17,17,17,.14);text-decoration:none;font-size:15px;font-weight:600" style-hover="color:#FF583D"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF">{{ c.n }}</span>{{ c.t }}</a>
       </sc-for>
     </nav>
     <div style="flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:clamp(36px,4vw,56px)">
-      <sc-for list="{{ clauses }}" as="c" hint-placeholder-count="9">
+      <sc-for list="{{ clauses }}" as="c" hint-placeholder-count="10">
         <section id="{{ c.id }}" aria-labelledby="{{ c.hid }}" style="scroll-margin-top:110px;display:flex;flex-direction:column;gap:14px">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#4355FF">{{ c.n }}</span>
           <h2 id="{{ c.hid }}" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(36px,4.5vw,60px);line-height:.88;text-transform:uppercase">{{ c.t }}</h2>
@@ -75,7 +75,8 @@ class Component extends DCLogic {
       'We only collect personal data you give us, or that is created when you order or contact us:'
     ], [
       'Orders: your name, email, phone number, delivery address, the model and colourway you bought, and payment confirmation. Stripe handles your card details; we never see or store your full card number.',
-      'Enquiries: your name, email or phone number, the topic and your message, sent through our contact form, by email, phone or WhatsApp.',
+      'Contact-form enquiries: your name, email address and mobile number (both are required), your preferred contact method, the enquiry topic, model and colourway where relevant, any order number and your message.',
+      'Other enquiries: the details you choose to share when you contact us by email, phone or WhatsApp.',
       'Warranty and support: your order number, a description of the fault, and any photos or videos you send.',
       'Website: basic technical data such as your IP address and browser type, which our hosting and security providers log automatically.'
     ]],
@@ -83,7 +84,9 @@ class Component extends DCLogic {
       'We use your data to:'
     ], [
       'process your payment, deliver your bike and send you tracking details',
-      'answer your questions and arrange bank-transfer orders you ask for',
+      'respond to your enquiry and contact you using your selected preferred method (WhatsApp, phone call or email)',
+      'keep a record of our communications with you',
+      'handle order, delivery, cancellation, return, refund and warranty enquiries where applicable, and arrange bank-transfer or other manually arranged orders you ask for',
       'handle cancellations, returns, refunds, warranty claims and replacement parts',
       'keep the business and tax records the law requires',
       'protect the website and our customers against fraud and misuse'
@@ -92,11 +95,18 @@ class Component extends DCLogic {
       'Under UK data protection law (the UK GDPR and Data Protection Act 2018) we rely on: contract, to take and fulfil your order and support your bike; legal obligation, to keep tax and accounting records; and legitimate interests, to answer enquiries, prevent fraud and run the site securely.',
       'We don’t send marketing emails or messages. If we ever want to, we will ask for your consent first, and you can withdraw it at any time.'
     ]],
+    ['verification', 'Order verification and fraud prevention', [
+      'For high-value orders, we and our payment, security, fulfilment and delivery providers may process limited identity, contact, billing, delivery, device, payment-status and order-fulfilment information where reasonably necessary to verify an order, prevent fraud, establish delivery, manage returns or respond to legal and payment disputes.',
+      'We do not store complete payment-card details. Card and payment information is processed by the applicable payment provider, such as Stripe or, for an agreed manual payment request, Wise.',
+      'Verification and fulfilment records may include available frame, motor and battery serial numbers, packaging photographs or video, shipment weight, tracking information, delivery confirmation and return-inspection records.',
+      'We will only request identity information where it is necessary and proportionate to the risk presented by an order. Access is restricted to those who need it, and the information is retained only for as long as reasonably necessary for contractual, fraud-prevention, accounting, dispute-resolution and legal purposes.'
+    ]],
     ['share', 'Who we share it with', [
       'We share only what each provider needs to do its job:'
     ], [
-      'Stripe: card payments, receipts and fraud checks',
-      'Formspree: delivers contact-form messages to our inbox',
+      'Stripe: card payments, receipts and fraud checks. Stripe may process payment, device and fraud-prevention information; we receive payment status and order details, not complete card details or Stripe’s full fraud-scoring data',
+      'Wise Business: single-use payment requests for manually arranged orders. Wise may process payment, device and fraud-prevention information on its own systems',
+      'Formspree: delivers contact-form messages, including your email address and mobile number, to our inbox',
       'WhatsApp (Meta): if you choose to message us there',
       'Our courier: your name, address and phone number, to deliver your bike',
       '79BIKE (Hong Kong Yingteng International Trade Limited): order and fault details needed to fulfil your order and assess warranty claims',
@@ -107,7 +117,7 @@ class Component extends DCLogic {
       'Some of these providers process data outside the UK, including in the United States and Hong Kong. Where they do, the transfer is covered by UK adequacy regulations (including the UK–US data bridge) or by approved contract terms such as the UK International Data Transfer Agreement or Addendum.'
     ]],
     ['keep', 'How long we keep it', [
-      'Order, payment, refund and warranty records: 6 years after the end of the tax year in which you ordered, as required for tax and to deal with any claims.',
+      'Order, payment, refund and warranty records, including related order-verification, dispatch, delivery, return and dispute records: 6 years after the end of the tax year in which you ordered, as required for tax and to deal with any claims. Where a live legal or payment dispute reasonably requires it, we may keep the relevant information for longer, until the dispute is resolved.',
       'Enquiries that don’t lead to an order: up to 12 months after our last contact.',
       'Website logs: as long as our hosting and security providers keep them, normally no more than a few weeks.'
     ]],

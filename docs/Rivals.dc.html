@@ -54,7 +54,7 @@
           <a href="{{ m.href }}" style="height:56px;padding:0 22px;background:#FF583D;color:#111111;text-decoration:none;font-weight:800;font-size:17px;display:flex;align-items:center;gap:12px" style-hover="background:#F4F1E9;color:#111111">{{ m.cta }} →</a>
           <a href="/contact" style="height:56px;padding:0 20px;border:1.5px solid #F4F1E9;color:#F4F1E9;text-decoration:none;font-weight:700;display:flex;align-items:center" style-hover="background:#F4F1E9;color:#111111">Ask us to compare</a>
         </div>
-        <p style="margin:0;font-size:13px;line-height:1.55;color:#B9B5AA">{{ m.note }} Falcon figures from 79BIKE documentation. Rival figures from Sur-Ron UK published specifications and UK retail pricing, checked October 2026 — prices change, so check before you buy. *Torque as quoted by each manufacturer; measurement methods may differ. Sur-Ron is a trademark of its owner; RIDE79 is not affiliated with Sur-Ron.</p>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#B9B5AA">{{ m.note }} Falcon figures from 79BIKE documentation. *Torque as quoted by each manufacturer; measurement methods may differ. Sur-Ron is a trademark of its owner; RIDE79 is not affiliated with Sur-Ron.</p>
       </div>
     </div>
   </div>
@@ -63,16 +63,16 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;focus&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;both&quot;,&quot;gt&quot;,&quot;pro&quot;],&quot;default&quot;:&quot;both&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   static M = {
-    gt: { tab: 'Falcon GT vs Ultra Bee HP X', us: 'Falcon GT', usPrice: '£3,495 delivered', them: 'Ultra Bee HP X', themPrice: 'from £5,599 UK retail', href: '/falcon-gt', cta: 'Explore the GT',
-      big: '−£2,104', bigLabel: 'Same quoted top speed. 23.5 kg lighter. £2,104 cheaper.',
-      verdict: 'Both quote 59 mph. The GT gets there in a chassis 23.5 kg lighter, for £2,104 less — and comes loaded: Lewis racing-grade brakes with E-ABS, Fastace suspension with high/low-speed compression adjustment, and a smart NFC dashboard. The Ultra Bee has more peak power and a bigger battery; the GT is the smarter spend.',
-      note: 'MY26 Ultra Bee HP X.',
-      rows: [['UK price', '£3,495 delivered', 'From £5,599', 'a'], ['Price per kW peak', '£208', '£229', 'a'], ['Peak power', '16.8 kW', '24.5 kW', 'b'], ['Quoted torque*', '590 N·m', '520 N·m (at wheel)', 'a'], ['Battery', '72V 40Ah · 2.9 kWh', '74V 60Ah · 4.4 kWh', 'b'], ['Weight', '65 kg', '88.5 kg', 'a'], ['Top speed (quoted)', '59 mph', '59 mph', ''], ['Brakes', 'Lewis racing-grade, 220 × 2.8 mm + E-ABS', 'Hydraulic discs', 'a'], ['Suspension', 'Fastace, adj. high/low-speed compression', 'Adjustable fork & shock', ''], ['NFC smart start', 'Yes — tap to start', 'Not quoted', 'a']] },
+    gt: { tab: 'Falcon GT vs Ultra Bee HP X', us: 'Falcon GT', usPrice: '£3,495 delivered', them: 'Ultra Bee HP X', themPrice: 'UK RRP £5,999', href: '/falcon-gt', cta: 'Explore the GT',
+      big: '−£2,504', bigLabel: 'Same quoted top speed. 23.5 kg lighter. £2,504 cheaper.',
+      verdict: 'Both quote 59 mph. The GT gets there in a chassis 23.5 kg lighter, for £2,504 less — and comes loaded: Lewis racing-grade brakes with E-ABS, Fastace suspension with high/low-speed compression adjustment, and a smart NFC dashboard. The Ultra Bee has more peak power and a bigger battery. The Falcon GT’s manufacturer-quoted torque figure is 610 N·m, 90 N·m higher than the Ultra Bee HP X’s published 520 N·m figure. Manufacturer measurement methods may differ.',
+      note: 'MY26 Ultra Bee HP X. Competitor specifications and UK RRP checked 24 October 2026. Prices and specifications can change; verify before purchase.',
+      rows: [['UK price', '£3,495 delivered', 'UK RRP £5,999', 'a'], ['Price per kW peak', '≈ £208', '≈ £245', 'a'], ['Peak power', '16.8 kW', '24.5 kW', 'b'], ['Quoted torque*', '610 N·m', '520 N·m (at wheel)', 'a'], ['Battery', '72V 40Ah · 2.9 kWh', '74V 60Ah · 4.4 kWh', 'b'], ['Weight', '65 kg', '88.5 kg', 'a'], ['Top speed (quoted)', '59 mph', '59 mph', ''], ['Brakes', 'Lewis racing-grade, 220 × 2.8 mm + E-ABS', 'Hydraulic discs', 'a'], ['Suspension', 'Fastace, adj. high/low-speed compression', 'Adjustable fork & shock', ''], ['NFC smart start', 'Yes — tap to start', 'Not quoted', 'a']] },
     pro: { tab: 'Falcon Pro vs Light Bee X', us: 'Falcon Pro', usPrice: '£2,995 delivered', them: 'Light Bee X', themPrice: 'RRP £3,295', href: '/falcon-pro', cta: 'Explore the Pro',
       big: '−£300', bigLabel: 'Same peak power. More torque, more colours — and £300 cheaper.',
       verdict: 'Same 10 kW peak power, same 72V 35Ah battery, same weight to within 200 g, same suspension travel — but the Pro quotes more torque and a higher top speed, carries a heavier rider, starts with a tap of NFC and comes in six factory colourways. All for £300 less, delivered. The Light Bee X has the bigger aftermarket.',
-      note: 'MY26 Light Bee X 10 kW. Light Bee X max load from Sur-Ron\'s MY25 published spec.',
-      rows: [['UK price', '£2,995 delivered', 'RRP £3,295', 'a'], ['Quoted torque*', '410 N·m', '295 N·m (at wheel)', 'a'], ['Top speed (quoted)', '56 mph', '50 mph', 'a'], ['Battery', '72V 35Ah', '72V 35Ah', ''], ['Weight', '59.2 kg', '59 kg', ''], ['Peak power', '10 kW', '10 kW', ''], ['Max rider load', '120 kg', '100 kg', 'a'], ['Suspension', 'Fastace 2.0 fork + Fastace shock', 'Inverted fork + adjustable rear', ''], ['NFC smart start', 'Yes — tap to start', 'Not quoted', 'a'], ['Factory colourways', '6', '5', 'a']] }
+      note: 'MY26 Light Bee X 10 kW. Light Bee X max load from Sur-Ron\'s MY25 published spec. Rival figures from Sur-Ron UK published specifications and UK retail pricing, checked October 2026 — prices change, so check before you buy.',
+      rows: [['UK price', '£2,995 delivered', 'RRP £3,295', 'a'], ['Quoted torque*', '410 N·m', '295 N·m (at wheel)', 'a'], ['Top speed', '56 mph / 90 km/h quoted', '50 mph quoted', 'a'], ['Battery', '72V 35Ah', '72V 35Ah', ''], ['Weight', '59.2 kg', '59 kg', ''], ['Peak power', '10 kW', '10 kW', ''], ['Max rider load', '120 kg', '100 kg', 'a'], ['Suspension', 'Fastace 2.0 fork + Fastace shock', 'Inverted fork + adjustable rear', ''], ['NFC smart start', 'Yes — tap to start', 'Not quoted', 'a'], ['Factory colourways', '6', '5', 'a']] }
   };
   state = { k: null };
   renderVals() {

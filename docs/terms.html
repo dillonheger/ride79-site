@@ -14,11 +14,11 @@
   <meta name="theme-color" content="#111111">
   <title>Terms of Sale, Cancellations &amp; Returns | RIDE79</title>
   <meta name="description" content="RIDE79 terms of sale for the 79BIKE Falcon GT and Falcon Pro: ordering, payment, UK mainland delivery, your 14-day right to cancel, returns, refunds and faulty goods.">
+  <link rel="canonical" href="https://ride79.co.uk/terms">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RIDE79">
   <meta property="og:image" content="https://ride79.co.uk/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://ride79.co.uk/terms">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -28,7 +28,7 @@
 <dc-import name="Nav" active="buying" hint-size="100%,100px"></dc-import>
 <main id="main" style="font-family:Archivo,sans-serif;color:#111111;background:#F4F1E9">
   <section aria-labelledby="t-title" style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(16px,3vw,40px) clamp(32px,4vw,56px);display:flex;flex-direction:column;gap:18px">
-    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#55524B">TERMS OF SALE / LAST UPDATED 13 OCTOBER 2026</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#55524B">TERMS OF SALE / LAST UPDATED 24 OCTOBER 2026</span>
     <h1 id="t-title" style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(60px,10vw,152px);line-height:.8;text-transform:uppercase">Terms of sale.<br><span style="color:#FF583D">14 days to change your mind.</span></h1>
     <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;max-width:58ch;text-wrap:pretty">These terms apply when you buy a Falcon GT or Falcon Pro from RIDE79. Please read them before you order. They don't affect your legal rights as a consumer.</p>
   </section>
@@ -44,7 +44,7 @@
 
   <div style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,88px) clamp(16px,3vw,40px);display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-start">
     <nav aria-label="Sections" style="flex:1 1 240px;max-width:320px;display:flex;flex-direction:column;border-top:2px solid #111111">
-      <sc-for list="{{ toc }}" as="c" hint-placeholder-count="10">
+      <sc-for list="{{ toc }}" as="c" hint-placeholder-count="14">
         <a href="{{ c.href }}" style="display:grid;grid-template-columns:36px 1fr;gap:8px;min-height:44px;align-items:center;border-bottom:1px solid rgba(17,17,17,.14);text-decoration:none;font-size:15px;font-weight:600" style-hover="color:#FF583D"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4355FF">{{ c.n }}</span>{{ c.t }}</a>
       </sc-for>
     </nav>
@@ -68,7 +68,7 @@
         <div style="background:#111111;color:#F4F1E9;padding:14px 20px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em">MODEL CANCELLATION FORM</div>
         <div style="padding:clamp(18px,3vw,28px);display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.6">
           <h2 id="form-title" style="margin:0;font-size:22px;font-weight:800">Copy, complete and email this to hello@ride79.co.uk</h2>
-          <p style="margin:0;color:#3A3832">You don't have to use this form. Any clear written statement is enough.</p>
+          <p style="margin:0;color:#3A3832">You don't have to use this form. Any clear statement that you have decided to cancel is enough, by email, post or telephone.</p>
           <p style="margin:0;padding:16px;border-left:0;background:#F4F1E9;font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.75;white-space:pre-line">To: Dillon Heger, trading as RIDE79, 12a City Business Centre, London SE16 2XB · hello@ride79.co.uk
 I hereby give notice that I cancel my contract of sale of the following goods:
 Model and colourway:
@@ -103,13 +103,18 @@ class Component extends DCLogic {
     ['ordering', 'Ordering and payment', [
       'You order and pay online by card through Stripe, our payment provider. Your Stripe receipt confirms we have received your order and payment, and our contract with you starts when that confirmation is sent.',
       'We check stock after payment. If the colourway you chose is unavailable, we will contact you to offer an alternative colourway or a full refund, at your choice. If we can’t fulfil your order for any other reason, we will refund you in full within 14 days.',
-      'You can also pay by bank transfer on request. We will send you a written order first, and the contract starts when we confirm receipt of your payment.'
+      'You can also pay by bank transfer on request. We will send you a written order first, and the contract starts when we confirm receipt of your payment.',
+      'Before dispatch, we may carry out reasonable fraud-prevention and order-verification checks. Where reasonably necessary, we may ask the purchaser to confirm their identity, contact details, billing address, delivery address or authority to use the selected payment method. Dispatch may be delayed while proportionate verification checks are completed. If we cannot reasonably verify an order, we may cancel it and issue a full refund.',
+      'Any request to change the delivery address after payment is subject to further verification. For a high-value shipment, we may require the original order to be cancelled and refunded and a new order placed using the correct verified address rather than redirecting the shipment.',
+      'For manually arranged orders, including approved deliveries outside our standard UK-mainland delivery area, payment may also be requested through a single-use Wise Business payment request. The written order confirmation will identify the applicable payment method, total price, delivery charge, delivery arrangements and applicable change-of-mind return-transport estimate.'
     ]],
     ['price', 'Price', [
       'Prices are shown in pounds sterling. The price you pay is the price shown when you order and includes tracked delivery to a UK mainland address. If we have made an obvious pricing error, we will contact you before dispatch and you can choose to continue at the correct price or cancel for a full refund.'
     ]],
     ['delivery', 'Delivery', [
       'We deliver to UK mainland addresses only: England, Wales and mainland Scotland. Orders are processed within 1–3 business days, then delivered by tracked courier in 3–7 business days. These are estimates, not guaranteed dates; we will send tracking details as soon as we have them.',
+      'Because each bike is a high-value vehicle, delivery may require an adult aged 18 or over, a signature, delivery PIN or reasonable identity confirmation. Where supported by the carrier, bikes will not be left unattended in a safe place or redirected to another address without our prior agreement.',
+      'Before dispatch, we may document the bike and shipment using available frame, motor and battery serial numbers, photographs or video of its condition and packaging, numbered security seals, shipment weight and courier tracking records. These records may be used to resolve delivery, damage, non-receipt, return and payment disputes.',
       'Standard delivery does not cover the following. Please contact us before ordering and we will confirm whether we can deliver and whether there is an extra charge:'
     ], [
       'the Scottish Highlands and Scottish islands',
@@ -119,21 +124,41 @@ class Component extends DCLogic {
     ]],
     ['receiving', 'When your bike arrives', [
       'Someone aged 18 or over must be available to receive the bike. Please check the packaging and the bike when it arrives and tell us about any delivery damage or missing parts as soon as you can, ideally within 7 days, with photos or a short video. This helps us claim from the courier quickly. It doesn’t limit your legal rights.',
-      'The bike is your responsibility from the moment it is delivered to you or someone you nominate. Ownership passes to you once we have received full payment. Please keep the original packaging for at least 14 days in case you want to return the bike.'
+      'The bike is your responsibility from the moment it is delivered to you or someone you nominate. Ownership passes to you once we have received full payment. Please keep the original packaging for at least 14 days in case you want to return the bike.',
+      'Before opening the packaging, please photograph any visible damage, the shipping labels and any numbered security seals. Please keep all packaging until you are satisfied with the bike and, wherever reasonably possible, until the 14-day cancellation period has ended.',
+      'The courier’s signature, delivery photograph, PIN confirmation, GPS-supported delivery record or other delivery evidence may be considered when establishing when and where delivery occurred. This does not affect your legal rights if the bike was not genuinely delivered to you or to a person you nominated.'
     ]],
     ['cancel', 'Your right to cancel', [
-      'You can cancel your order for any reason within 14 days, starting the day after the bike is delivered to you. You can also cancel at any time before delivery.',
-      'To cancel, tell us clearly in writing, by email to hello@ride79.co.uk or by post. You can use the model cancellation form below, but you don’t have to. Your message just needs to reach us before the 14 days run out.',
+      'You can cancel your order for any reason within 14 days, beginning on the day after the bike is delivered to you. You may also cancel at any time before delivery.',
+      'To cancel, give us a clear statement that you have decided to cancel. You may contact us by email, post or telephone using the details on this page. We recommend email because it provides both parties with a written record, but written notice is not mandatory. You may use the model cancellation form below, but you do not have to.',
+      'Your cancellation notice must be given before the cancellation period expires. Cancellation does not require our approval.',
       'If you cancel before we dispatch the bike, we will refund you in full. If the bike is already on its way, please refuse delivery or follow the return steps below.'
     ]],
     ['returns', 'Returning the bike', [
-      'Return the bike within 14 days of telling us you are cancelling. Contact us first so we can give you the return address and instructions. Please don’t send a bike back without speaking to us.',
-      'Unless the bike is faulty or not as described, you pay the cost of returning it. A bike can’t be returned by post, so it needs a courier or van collection. This typically costs around £100–£200 depending on your location, within the UK mainland, and we can arrange the collection for you at cost if you prefer.',
-      'Pack the bike securely, ideally in its original packaging, with the charger, keys, manuals and everything else it came with.'
+      'Return the bike without undue delay and no later than 14 days after telling us that you are cancelling. Your cancellation does not require our approval, but please contact us before arranging transport so that we can provide the correct return address and safe return instructions. Contacting us for instructions does not extend the return deadline or make cancellation dependent on our permission.',
+      'Because the bike is a high-value electric motorcycle containing a lithium battery, it cannot normally be returned through an ordinary parcel service. It must be securely packaged and transported by a suitable carrier legally able to carry this type of lithium-battery vehicle, with appropriate insurance. We can arrange collection at the disclosed cost, or agree another suitable carrier with you.',
+      'Unless the bike is faulty, damaged on arrival or not as described, you are responsible for the direct cost of returning it.',
+      'For a UK-mainland change-of-mind return, the current estimated specialist collection cost is approximately £100–£200, with an estimated maximum of approximately £200.',
+      'For Northern Ireland, islands, the Scottish Highlands and other non-standard areas, delivery arrangements and the estimated change-of-mind return cost must be confirmed in writing before the customer pays.',
+      'The returned shipment must contain the bike supplied under the order together with its original battery, charger, keys, manuals and all included accessories. Where recorded, frame, motor and battery serial numbers will be checked against our dispatch records.',
+      'You may inspect the bike as you reasonably would in a shop. Riding it, using it outdoors, increasing its recorded mileage, charging or operating it beyond what is reasonably necessary for inspection, modifying it, removing protective seals beyond what is reasonably necessary for inspection, or returning it dirty, damaged, incomplete or with abnormal tyre wear may reduce its value. Where legally permitted, we may reduce the refund by the amount of the demonstrable loss in value.',
+      'Please retain and use the original packaging wherever reasonably possible. The absence of original packaging does not by itself remove your legal cancellation right, but you remain responsible for packaging the bike safely. Where legally permitted, damage or additional cost caused by inadequate return packaging may be reflected in the assessment of diminished value.',
+      'If the bike is faulty, damaged on arrival or not as described, RIDE79 will arrange or bear the reasonable return cost in accordance with your statutory rights.'
     ]],
     ['refunds', 'Refunds', [
-      'We will refund the full price you paid, including the delivery included in it, to your original payment method. We do this within 14 days of receiving the bike back, or of you giving us proof that you have sent it back, whichever is sooner. We don’t charge cancellation, restocking or processing fees.',
-      'You may handle and inspect the bike as you would in a shop. If the bike has been handled beyond that, for example ridden, used outdoors, charged and run, modified, or returned dirty, scuffed or incomplete, we may reduce your refund to reflect the loss in value. We will explain any reduction in writing. If you cancel before delivery, your refund will be made within 14 days of you telling us.'
+      'We will refund the amount legally due using the same payment method used for the original transaction, unless you expressly agree otherwise. We will not charge a refund fee.',
+      'For a change-of-mind cancellation, the refund includes the bike price and the cost of our least expensive standard outward-delivery method. If you paid for an optional enhanced or non-standard delivery service, we are not required to refund the amount above the cost of standard delivery.',
+      'If you cancel before we dispatch the bike, your refund will be made within 14 days of you telling us. Where goods have been dispatched, we may withhold reimbursement until we have received the bike back or you have supplied adequate evidence that it has been sent back, whichever occurs first. We will make the refund no later than 14 days after that point.',
+      'Return evidence should reasonably identify the order and returned bike. Depending on the carrier, relevant evidence may include the carrier’s name, collection address, collection date, consignment or tracking number, shipment description and shipment weight. We will assess the evidence reasonably. A receipt that does not identify the shipment may not, by itself, demonstrate that the supplied bike was returned.',
+      'Returned bikes may be documented and checked against available dispatch records, including serial numbers, shipment contents, condition, recorded mileage where available, security seals and included equipment.',
+      'If a different item, substituted vehicle, unmatched battery or component, empty packaging or materially incomplete shipment is received, we will document the discrepancy and contact the customer. We may withhold or adjust a refund only where lawful and supported by the available evidence. Suspected theft, deliberate substitution or fraudulent return activity may be reported to the payment provider, carrier or appropriate authorities.',
+      'We do not charge an automatic cancellation, administration, processing or restocking fee. However, where legally permitted, we may deduct a demonstrable loss in value caused by handling beyond what was reasonably necessary to establish the bike’s nature, characteristics and functioning. We will explain any deduction and the evidence supporting it.'
+    ]],
+    ['payment-disputes', 'Payment disputes and fraudulent claims', [
+      'Please contact us promptly if you believe an order was not delivered, was incorrect, arrived damaged or if you do not recognise a payment. We will investigate and provide the available order, payment, dispatch and delivery records.',
+      'Nothing in these terms restricts your right to contact your card issuer, payment provider, Citizens Advice, Trading Standards or another appropriate body, or to exercise any other statutory right.',
+      'However, knowingly making a false non-receipt claim, returning substituted goods, deliberately concealing material use or damage, or submitting a dishonest payment dispute may constitute fraud.',
+      'We reserve the right to respond to inaccurate or fraudulent payment disputes using relevant evidence available to us. This may include customer communications, proportionate identity and address verification, serial-number records, packing photographs or video, shipment weight, tracking, signatures, delivery photographs, PIN records and return-inspection evidence. Suspected criminal activity may be reported to the appropriate authorities.'
     ]],
     ['faulty', 'If something is wrong', [
       'We are legally required to supply a bike that is of satisfactory quality, fit for purpose and as described. Under the Consumer Rights Act 2015, if the bike is faulty you are entitled to reject it for a full refund within 30 days of delivery; after that, to a repair or replacement, and if that fails, a price reduction or refund. For faulty bikes we cover reasonable return costs.',
