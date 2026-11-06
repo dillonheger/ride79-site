@@ -17,11 +17,16 @@ window.RIDE79 = window.RIDE79 || {
     const u = this.url(model, colour);
     if (u) {
       const ref = (model + '-' + colour).replace(/[^a-z0-9]+/gi, '-').toLowerCase();
-      const dest = u + (u.includes('?') ? '&' : '?') + 'client_reference_id=' + encodeURIComponent(ref);
+      let dest = u + (u.includes('?') ? '&' : '?') + 'client_reference_id=' + encodeURIComponent(ref);
       // Stripe can't load inside a frame (previews, share links) — open a new tab there; same tab on the live site.
       let framed = true; try { framed = window.self !== window.top; } catch (e) {}
+      if (window.RIDE79Analytics) dest = window.RIDE79Analytics.decorate(dest);
+      const navigate = () => {
       if (framed) { if (!window.open(dest, '_blank', 'noopener')) window.top.location.href = dest; }
       else window.location.href = dest;
+      };
+      if (window.RIDE79Analytics && !framed) window.RIDE79Analytics.checkout(model, colour, navigate);
+      else navigate();
       return true;
     }
     window.open('https://wa.me/447875991471?text=' + encodeURIComponent("Hi RIDE79, I'd like to order the " + this.NAMES[model] + ' in ' + colour + '.'), '_blank', 'noopener,noreferrer');
