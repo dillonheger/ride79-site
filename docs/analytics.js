@@ -3,6 +3,8 @@
   'use strict';
   if (window.RIDE79Analytics) return;
   const ID = 'G-B2W1QT9XP4', KEY = 'ride79_analytics_consent_v1';
+  const BACKEND = 'https://ride79-stripe-tracking.dillonheger83.workers.dev';
+  const REFS = 'ride79_checkout_refs_v1';
   const UTM = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
   let accepted = false, loaded = false, lastButton = 'direct', campaign = {};
   const safe = value => /^[a-zA-Z0-9_. -]{1,100}$/.test(value || '') ? value : '';
@@ -44,11 +46,42 @@
     }
   }
   function item(model, colour) { return {item_id:model,item_name:model === 'gt' ? 'Falcon GT' : 'Falcon Pro',item_variant:colour || '',price:model === 'gt' ? 3495 : 2995,quantity:1}; }
+  function revokeReference(ref) {
+    return fetch(BACKEND + '/revoke', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(ref),keepalive:true}).then(r=>r.ok).catch(()=>false);
+  }
+  function revokeSaved() {
+    let refs; try { refs=JSON.parse(read(localStorage,REFS)||'[]'); } catch (_) { refs=[]; }
+    refs.forEach(ref=>{ revokeReference(ref).then(ok=>{if(ok){
+      let current;try{current=JSON.parse(read(localStorage,REFS)||'[]');}catch(_){current=[];}
+      write(localStorage,REFS,JSON.stringify(current.filter(r=>r.reference!==ref.reference)));
+    }}); });
+  }
+  async function registerCheckout(model,colour,button) {
+    if(!accepted || !loaded)return;
+    let expired=false, timer;
+    const timeout=new Promise(resolve=>{timer=setTimeout(()=>{expired=true;resolve();},1800);});
+    const work=(async()=>{
+      const get=field=>new Promise(resolve=>window.gtag('get',ID,field,resolve));
+      const [client_id,session_id]=await Promise.all([get('client_id'),get('session_id')]);
+      if(expired || !accepted || !/^\d{1,20}\.\d{1,20}$/.test(client_id||'') || !/^\d{1,20}$/.test(String(session_id||'')))return;
+      const response=await fetch(BACKEND+'/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:true,client_id,session_id,button_id:button,model,colour,campaign})});
+      if(!response.ok)return;
+      const ref=await response.json();
+      if(!/^r79_[a-f0-9]{32}$/.test(ref.reference||'') || !/^[a-f0-9-]{36}$/.test(ref.revoke_token||''))return;
+      if(expired || !accepted){revokeReference(ref);return;}
+      let refs;try{refs=JSON.parse(read(localStorage,REFS)||'[]');}catch(_){refs=[];}
+      refs=refs.filter(r=>r.at>Date.now()-7*86400000);
+      refs.push({...ref,at:Date.now()});write(localStorage,REFS,JSON.stringify(refs));
+      return ref.reference;
+    })().catch(()=>undefined);
+    const result=await Promise.race([work,timeout]);clearTimeout(timer);return result;
+  }
   function choose(value) {
     write(localStorage,KEY,JSON.stringify({value,at:Date.now()}));
     if (value === 'accepted') start();
     else {
       accepted = false;
+      revokeSaved();
       if (window.gtag && loaded) window.gtag('consent','update',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
       window['ga-disable-' + ID] = true;
       try { sessionStorage.removeItem('ride79_campaign'); } catch (_) {}
@@ -63,7 +96,7 @@
     const panel = document.createElement('section');
     panel.id='ride79-cookie-panel'; panel.setAttribute('role','region'); panel.setAttribute('aria-label','Analytics cookie preferences');
     panel.style.cssText='position:fixed;bottom:12px;left:12px;right:12px;max-width:620px;max-height:80vh;overflow:auto;z-index:2147483647;background:#111;color:#f4f1e9;border:1px solid #777;padding:20px;box-shadow:0 4px 24px #0006;font:15px/1.5 system-ui,sans-serif';
-    panel.innerHTML='<strong style="font-size:19px">Help us improve RIDE79</strong><p>With your permission, Google Analytics measures visits, traffic sources and shopping clicks. Optional analytics cookies stay off until you accept. Advertising tracking stays off.</p><p><a href="/privacy#cookies" style="color:#fff">Privacy and cookie details</a></p><div style="display:flex;gap:12px;flex-wrap:wrap"><button type="button" data-choice="accepted">Accept analytics</button><button type="button" data-choice="rejected">Reject analytics</button></div>';
+    panel.innerHTML='<strong style="font-size:19px">Help us improve RIDE79</strong><p>With your permission, Google Analytics measures visits, traffic sources and shopping clicks, completed purchases and expired checkouts. Optional analytics cookies stay off until you accept. Advertising tracking stays off.</p><p><a href="/privacy#cookies" style="color:#fff">Privacy and cookie details</a></p><div style="display:flex;gap:12px;flex-wrap:wrap"><button type="button" data-choice="accepted">Accept analytics</button><button type="button" data-choice="rejected">Reject analytics</button></div>';
     panel.querySelectorAll('button').forEach(button=>{button.style.cssText='background:#f4f1e9;color:#111;border:1px solid #aaa;padding:12px 18px;font:600 15px system-ui;cursor:pointer';button.addEventListener('click',()=>choose(button.dataset.choice));});
     document.body.appendChild(panel);
   }
@@ -71,9 +104,10 @@
     event, preferences:show,
     checkout(model,colour,done) {
       if (!accepted) { done(); return; }
+      const registration=registerCheckout(model,colour,lastButton);
       const details={currency:'GBP',value:model==='gt'?3495:2995,button_id:lastButton,items:[item(model,colour)]};
       event('checkout_click',details);
-      let sent=false; const finish=()=>{if (!sent){sent=true;done();}};
+      let sent=false; const finish=()=>{if (!sent){sent=true;registration.then(ref=>done(accepted?ref:undefined));}};
       event('begin_checkout',Object.assign({},details,{event_callback:finish,event_timeout:800}));
       setTimeout(finish,900);
     },
@@ -91,7 +125,7 @@
   },true);
   function ready() {
     let saved; try{saved=JSON.parse(read(localStorage,KEY)||'null');}catch(_){}
-    if(saved && Date.now()-saved.at < 180*86400000){if(saved.value==='accepted')start();}else show();
+    if(saved && Date.now()-saved.at < 180*86400000){if(saved.value==='accepted')start();else revokeSaved();}else show();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready);else ready();
 })();
