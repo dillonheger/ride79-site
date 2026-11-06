@@ -21,7 +21,8 @@ window.RIDE79 = window.RIDE79 || {
       // Stripe can't load inside a frame (previews, share links) — open a new tab there; same tab on the live site.
       let framed = true; try { framed = window.self !== window.top; } catch (e) {}
       if (window.RIDE79Analytics) dest = window.RIDE79Analytics.decorate(dest);
-      const navigate = () => {
+      const navigate = reference => {
+      if (/^r79_[a-f0-9]{32}$/.test(reference || '')) { const tracked = new URL(dest); tracked.searchParams.set('client_reference_id',reference); dest=tracked.href; }
       if (framed) { if (!window.open(dest, '_blank', 'noopener')) window.top.location.href = dest; }
       else window.location.href = dest;
       };
