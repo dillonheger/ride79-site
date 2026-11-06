@@ -40,7 +40,7 @@
           </div>
         </fieldset>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <button type="button" onClick="{{ buyNow }}" style="height:60px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 22px" style-hover="background:#111111;color:#F4F1E9">Buy now — {{ d.price }} <span aria-hidden="true">→</span></button>
+          <button data-analytics-id="productpage-checkout-1" type="button" onClick="{{ buyNow }}" style="height:60px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 22px" style-hover="background:#111111;color:#F4F1E9">Buy now — {{ d.price }} <span aria-hidden="true">→</span></button>
           <span style="font-size:14px;color:#55524B">{{ cur.name }} · secure card checkout by Stripe · delivery included</span>
           <a href="{{ waQ }}" target="_blank" rel="noopener noreferrer" aria-label="{{ waLabel }}" style="font-size:15px;font-weight:600;color:#111111;padding:6px 0">Questions? Chat to us on WhatsApp →</a>
           <p style="margin:0;font-size:13px;line-height:1.5;color:#55524B">By ordering, you agree to our <a href="/terms">Terms of Sale</a>. You have a <a href="/terms#cancel">14-day cancellation right</a>. For a change-of-mind return, you are responsible for suitable return transport and may be liable for diminished value caused by handling beyond what is reasonably necessary. Estimated UK-mainland change-of-mind return transport: approximately £100–£200.</p>
@@ -93,7 +93,7 @@
   <div aria-label="Buy" role="region" style="margin-top:calc(-1 * clamp(32px,4vw,60px));margin-bottom:clamp(40px,5vw,72px)"><div style="max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,40px)">
     <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:14px 0;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
       <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase">{{ d.name }} · {{ cur.name }} · {{ d.price }} delivered</span>
-      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="#buy" style="min-height:48px;padding:0 16px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Change colour</a><button type="button" onClick="{{ buyNow }}" style="min-height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Buy now <span aria-hidden="true">→</span></button></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="#buy" style="min-height:48px;padding:0 16px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Change colour</a><button data-analytics-id="productpage-checkout-2" type="button" onClick="{{ buyNow }}" style="min-height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Buy now <span aria-hidden="true">→</span></button></div>
     </div>
   </div></div>
   <section aria-label="Gallery" style="padding:0 0 clamp(64px,8vw,120px)">
@@ -118,7 +118,7 @@
           <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#FF583D">{{ d.videoKicker }}</span>
           <h2 style="margin:0;font-stretch:62%;font-weight:900;font-size:clamp(48px,6.5vw,96px);line-height:.85;text-transform:uppercase">{{ d.videoTitle }}</h2>
           <p style="margin:0;font-size:17px;line-height:1.55;color:#D8D4C9;max-width:40ch">{{ d.videoBody }}</p>
-          <button type="button" onClick="{{ buyNow }}" style="align-self:flex-start;min-height:52px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#F4F1E9;color:#111111">Buy now — {{ d.price }} <span aria-hidden="true">→</span></button>
+          <button data-analytics-id="productpage-checkout-3" type="button" onClick="{{ buyNow }}" style="align-self:flex-start;min-height:52px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#F4F1E9;color:#111111">Buy now — {{ d.price }} <span aria-hidden="true">→</span></button>
         </div>
         <video data-autoloop="" src="{{ d.video }}" controls="{{ true }}" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" aria-label="{{ d.videoLabel }}" style="justify-self:center;height:min(80vh,746px);width:auto;max-width:100%;aspect-ratio:9/16;object-fit:cover;background:#111111;display:block"></video>
       </div>
@@ -161,7 +161,7 @@
   <div aria-label="Buy" role="region" style="background:#FFFFFF"><div style="max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,40px)">
     <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:14px 0;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
       <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase">{{ d.name }} · {{ cur.name }} · {{ d.price }} delivered</span>
-      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="#buy" style="min-height:48px;padding:0 16px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Change colour</a><button type="button" onClick="{{ buyNow }}" style="min-height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Buy now <span aria-hidden="true">→</span></button></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="#buy" style="min-height:48px;padding:0 16px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Change colour</a><button data-analytics-id="productpage-checkout-4" type="button" onClick="{{ buyNow }}" style="min-height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Buy now <span aria-hidden="true">→</span></button></div>
     </div>
   </div></div>
   <section aria-labelledby="vs-title" style="padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px);max-width:1440px;margin:0 auto">
@@ -196,7 +196,7 @@
   <div aria-label="Buy" role="region" style="padding:clamp(24px,3vw,40px) 0"><div style="max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,40px)">
     <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:14px 0;border-top:1.5px solid #111111;border-bottom:1.5px solid #111111">
       <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase">{{ d.name }} · {{ cur.name }} · {{ d.price }} delivered</span>
-      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="#buy" style="min-height:48px;padding:0 16px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Change colour</a><button type="button" onClick="{{ buyNow }}" style="min-height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Buy now <span aria-hidden="true">→</span></button></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="#buy" style="min-height:48px;padding:0 16px;border:1.5px solid #111111;color:#111111;text-decoration:none;font-weight:700;font-size:15px;display:flex;align-items:center" style-hover="background:#111111;color:#F4F1E9">Change colour</a><button data-analytics-id="productpage-checkout-5" type="button" onClick="{{ buyNow }}" style="min-height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px" style-hover="background:#111111;color:#F4F1E9">Buy now <span aria-hidden="true">→</span></button></div>
     </div>
   </div></div>
 
@@ -282,7 +282,7 @@
             <a href="#buy" style="font-size:13px;color:#B9B5AA;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cur.name }} · change</a>
           </div>
         </div>
-        <button type="button" onClick="{{ buyNow }}" style="height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:15px;cursor:pointer;flex:0 0 auto" style-hover="background:#F4F1E9;color:#111111">Buy now →</button>
+        <button data-analytics-id="productpage-checkout-6" type="button" onClick="{{ buyNow }}" style="height:48px;padding:0 20px;border:0;background:#FF583D;color:#111111;font-family:Archivo,sans-serif;font-weight:800;font-size:15px;cursor:pointer;flex:0 0 auto" style-hover="background:#F4F1E9;color:#111111">Buy now →</button>
       </div>
     </div>
   </sc-if>
